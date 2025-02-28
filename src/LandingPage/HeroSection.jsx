@@ -7,7 +7,7 @@ const HeroSection = () => {
   return (
     <section className="relative h-screen overflow-hidden">
       {/* Overlay gradient with improved opacity balance */}
-      <div className="absolute inset-0 bg-gradient-to-r from-black via-black/70 to-transparent z-10"></div>
+      <div className="absolute inset-0 bg-gradient-to-r from-black via-black/50 to-transparent z-10"></div>
       
       {/* Hero image with subtle zoom animation using Framer Motion */}
       <motion.div 
