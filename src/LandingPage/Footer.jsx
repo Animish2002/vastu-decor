@@ -8,7 +8,7 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           <div>
             <h4 className="text-xl font-bold mb-6">
-              STUDIO<span className="text-indigo-400">SPACE</span>
+              Vastu Decor & Home Solutions
             </h4>
             <p className="text-gray-400 mb-6">
               Creating exceptional spaces that inspire, function, and endure.
@@ -178,7 +178,7 @@ const Footer = () => {
 
         <div className="flex flex-col md:flex-row justify-between items-center">
           <p className="text-gray-500 mb-4 md:mb-0">
-            © 2025 STUDIOSPACE. All rights reserved.
+            © 2025 Vastu Decor & Home Solutions. All rights reserved.
           </p>
           <div className="flex space-x-6">
             <a

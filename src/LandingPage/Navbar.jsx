@@ -22,13 +22,13 @@ const Navbar = () => {
   return (
     <nav
       className={`fixed w-full z-50 transition-all duration-300 ${
-        isScrolled ? "bg-white shadow-md py-2" : "bg-transparent py-6"
+        isScrolled ? "bg-white shadow-md py-4" : "bg-transparent py-6"
       }`}
     >
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center">
-          <a href="#" className="text-xl font-bold tracking-tighter">
-            STUDIO<span className="text-indigo-600">SPACE</span>
+          <a href="#" className="text-3xl font-light tracking-tighter">
+            Vastu Decor & Home Solutions
           </a>
 
           <div className="hidden md:flex items-center space-x-8">
