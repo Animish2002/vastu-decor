@@ -25,7 +25,7 @@ const HeroSection = () => {
       
       {/* Content container with staggered animations */}
       <div className="relative z-20 h-full flex items-center">
-        <div className="container mx-auto px-6">
+        <div className="mx-auto px-6">
           <motion.div 
             className="max-w-2xl"
             initial="hidden"
@@ -108,7 +108,7 @@ const HeroSection = () => {
       
       {/* Scroll indicator with Framer Motion animation */}
       <div className="absolute bottom-10 left-0 right-0 z-20">
-        <div className="container mx-auto px-4">
+        <div className="mx-auto px-4">
           <div className="flex justify-center">
             <motion.a 
               href="#about" 

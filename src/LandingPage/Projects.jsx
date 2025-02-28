@@ -87,7 +87,7 @@ const Projects = () => {
 
   return (
     <section id="projects" className="py-20">
-      <div className="container mx-auto px-4">
+      <div className="mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-3xl font-bold mb-4 text-gray-900">
             Our Featured Projects

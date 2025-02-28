@@ -4,7 +4,6 @@ import HeroSection from "./HeroSection";
 import AboutUs from "./AboutUs";
 import Footer from "./Footer";
 import ContactSection from "./ContactSection";
-import { AppleCardsCarouselDemo } from "./Projects";
 import Services from "./Services";
 import Testimonials from "./Testimonials";
 import { BentoGridDemo } from "./BentoGrid";
@@ -23,7 +22,7 @@ const Home = () => {
       <HeroSection />
       <AboutUs />
       <BentoGridDemo />
-   
+
       <Services />
       <Testimonials />
       <ContactSection />

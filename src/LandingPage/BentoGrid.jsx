@@ -23,7 +23,7 @@ export function BentoGridDemo() {
           projects that showcase our commitment to thoughtful design.
         </p>
       </div>
-      <BentoGrid className="max-w-6xl mx-auto">
+      <BentoGrid className="max-w-7xl mx-auto">
         {items.map((item, i) => (
           <BentoGridItem
             key={i}
