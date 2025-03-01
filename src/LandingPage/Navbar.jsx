@@ -38,12 +38,12 @@ const Navbar = () => {
           : "bg-transparent py-5"
       )}
     >
-      <div className="container mx-auto px-4">
+      <div className=" mx-auto px-18">
         <div className="flex items-center justify-between">
           {/* Logo */}
           <a
             href="/"
-            className="text-2xl md:text-3xl font-light tracking-tighter text-gray-900 flex items-center "
+            className="text-2xl md:text-3xl font-light tracking-tighter text-gray-900 flex items-center"
           >
             <span className="text-indigo-600 font-medium">Vastu</span>
             <span

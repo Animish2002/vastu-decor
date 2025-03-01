@@ -8,8 +8,6 @@ const HeroSection = () => {
     <section className="relative h-screen overflow-hidden">
       {/* Overlay gradient with improved opacity balance */}
       <div className="absolute inset-0 bg-gradient-to-r from-black via-black/50 to-transparent z-10"></div>
-      
-      {/* Hero image with subtle zoom animation using Framer Motion */}
       <motion.div 
         className="absolute inset-0"
         initial={{ scale: 1.05 }}
@@ -25,7 +23,7 @@ const HeroSection = () => {
       
       {/* Content container with staggered animations */}
       <div className="relative z-20 h-full flex items-center">
-        <div className="mx-auto px-6">
+        <div className="px-18">
           <motion.div 
             className="max-w-2xl"
             initial="hidden"
@@ -70,7 +68,7 @@ const HeroSection = () => {
             </motion.p>
             
             <motion.div 
-              className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4"
+              className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 ml-12"
               variants={{
                 hidden: { opacity: 0, y: 20 },
                 visible: {
