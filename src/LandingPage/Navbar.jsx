@@ -53,13 +53,13 @@ const Navbar = () => {
     <>
       <nav
         className={cn(
-          "fixed top-0 left-0 right-0 z-40 transition-all duration-300",
+          "fixed top-0 left-0 right-4 w-screen z-40 transition-all duration-300",
           isScrolled
             ? "bg-white/80 dark:bg-gray-900/90 backdrop-blur-md shadow-lg py-3"
             : "bg-transparent py-6"
         )}
       >
-        <div className="max-w-full mx-auto px-4 md:px-8 lg:max-w-7xl">
+        <div className="w-full mx-auto px-4 md:px-8 lg:max-w-7xl">
           <div className="flex items-center justify-between">
             {/* Logo */}
             <a

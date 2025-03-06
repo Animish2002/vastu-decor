@@ -120,10 +120,7 @@ const AboutUs = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <motion.div 
-              className="absolute -z-10 w-full h-full bg-indigo-200 rounded-lg"
-              style={{ top: '30px', left: '30px' }}
-            />
+           
             
             <motion.img
               src="/api/placeholder/600/800"
