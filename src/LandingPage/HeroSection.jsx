@@ -1,18 +1,18 @@
 import React from "react";
-import { ChevronRight, ArrowDown } from "lucide-react";
+import { ChevronRight, ArrowDown, Play } from "lucide-react";
 import { motion } from "framer-motion";
 import heroimage from "../assets/heroimage3.jpeg";
 
 const HeroSection = () => {
   return (
     <section className="relative h-screen overflow-hidden w-full">
-      {/* Overlay gradient with improved opacity balance */}
-      <div className="absolute inset-0 bg-gradient-to-r from-black via-black/50 to-transparent z-10"></div>
+      {/* Background with improved gradient overlay */}
+      <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/70 to-black/30 z-10"></div>
       <motion.div 
         className="absolute inset-0"
-        initial={{ scale: 1.05 }}
-        animate={{ scale: 1 }}
-        transition={{ duration: 20, ease: "easeOut" }}
+        initial={{ scale: 1.05, filter: "brightness(0.9)" }}
+        animate={{ scale: 1, filter: "brightness(1)" }}
+        transition={{ duration: 15, ease: "easeOut" }}
       >
         <img
           src={heroimage}
@@ -21,11 +21,11 @@ const HeroSection = () => {
         />
       </motion.div>
       
-      {/* Content container with staggered animations */}
+      {/* Content container with improved layout */}
       <div className="relative z-20 h-full flex items-center">
-        <div className="md:px-18 px-4">
+        <div className="container mx-auto px-4 md:px-8 ">
           <motion.div 
-            className="max-w-2xl"
+            className="max-w-3xl"
             initial="hidden"
             animate="visible"
             variants={{
@@ -38,10 +38,22 @@ const HeroSection = () => {
               }
             }}
           >
-            <motion.h1 
-              className="text-4xl md:text-6xl font-semibold text-white mb-6 leading-tight tracking-tight"
+            {/* Decorative line */}
+            <motion.div
+              className="w-20 h-1 bg-indigo-500 mb-6"
               variants={{
-                hidden: { opacity: 0, y: 20 },
+                hidden: { width: 0 },
+                visible: { 
+                  width: 80,
+                  transition: { duration: 0.8, ease: "easeOut" }
+                }
+              }}
+            />
+            
+            <motion.h1 
+              className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight"
+              variants={{
+                hidden: { opacity: 0, y: 30 },
                 visible: {
                   opacity: 1,
                   y: 0,
@@ -49,13 +61,16 @@ const HeroSection = () => {
                 }
               }}
             >
-              Transforming <span className="text-indigo-400">Vision</span> Into <span className="text-indigo-400">Space</span>
+              <span className="block">Transforming</span>
+              <span className="bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 to-purple-500">
+                Vision Into Space
+              </span>
             </motion.h1>
             
             <motion.p 
-              className="md:text-xl text-lg text-gray-200 mb-10 leading-relaxed max-w-xl"
+              className="md:text-xl text-lg text-gray-300 mb-10 leading-relaxed max-w-xl font-light"
               variants={{
-                hidden: { opacity: 0, y: 20 },
+                hidden: { opacity: 0, y: 30 },
                 visible: {
                   opacity: 1,
                   y: 0,
@@ -68,9 +83,9 @@ const HeroSection = () => {
             </motion.p>
             
             <motion.div 
-              className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 md:ml-12"
+              className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4"
               variants={{
-                hidden: { opacity: 0, y: 20 },
+                hidden: { opacity: 0, y: 30 },
                 visible: {
                   opacity: 1,
                   y: 0,
@@ -79,77 +94,125 @@ const HeroSection = () => {
               }}
             >
               <motion.button 
-                className="group bg-indigo-600 text-white px-8 py-4 rounded-md hover:bg-indigo-700 transition-all duration-300 flex items-center shadow-lg hover:shadow-indigo-500/30"
+                className="group bg-gradient-to-r from-indigo-500 to-purple-600 text-white px-8 py-4 rounded-full hover:shadow-lg hover:shadow-indigo-500/30 transition-all duration-300 flex items-center justify-center"
                 whileHover={{ scale: 1.03 }}
                 whileTap={{ scale: 0.98 }}
               >
-                View Projects 
+                <span>View Projects</span>
                 <motion.div
+                  className="ml-2"
+                  initial={{ x: 0 }}
                   whileHover={{ x: 4 }}
                   transition={{ type: "spring", stiffness: 400 }}
                 >
-                  <ChevronRight size={20} className="ml-2" />
+                  <ChevronRight size={18} />
                 </motion.div>
               </motion.button>
               
               <motion.button 
-                className="bg-transparent text-white border border-white/80 px-8 py-4 rounded-md hover:bg-white/10 transition-all duration-300 shadow-lg"
-                whileHover={{ scale: 1.03, backgroundColor: "rgba(255,255,255,0.1)" }}
+                className="bg-white/10 backdrop-blur-sm text-white border border-white/20 px-8 py-4 rounded-full hover:bg-white/20 transition-all duration-300 flex items-center justify-center"
+                whileHover={{ scale: 1.03 }}
                 whileTap={{ scale: 0.98 }}
               >
-                About Studio
+                <Play size={18} className="mr-2" />
+                <span>Watch Showreel</span>
               </motion.button>
+            </motion.div>
+            
+            {/* Stats section */}
+            <motion.div 
+              className="mt-16 grid grid-cols-3 gap-6 max-w-lg"
+              variants={{
+                hidden: { opacity: 0 },
+                visible: {
+                  opacity: 1,
+                  transition: { 
+                    delay: 0.8,
+                    staggerChildren: 0.2 
+                  }
+                }
+              }}
+            >
+              {[
+                { number: "15+", label: "Years Experience" },
+                { number: "200+", label: "Projects Completed" },
+                { number: "40+", label: "Design Awards" }
+              ].map((item, index) => (
+                <motion.div 
+                  key={index}
+                  className="text-center"
+                  variants={{
+                    hidden: { opacity: 0, y: 20 },
+                    visible: {
+                      opacity: 1,
+                      y: 0,
+                      transition: { duration: 0.6 }
+                    }
+                  }}
+                >
+                  <h3 className="text-2xl md:text-3xl font-bold text-white">{item.number}</h3>
+                  <p className="text-xs text-gray-400 mt-1 uppercase tracking-wider">{item.label}</p>
+                </motion.div>
+              ))}
             </motion.div>
           </motion.div>
         </div>
       </div>
       
-      {/* Scroll indicator with Framer Motion animation */}
-      <div className="absolute bottom-10 left-0 right-0 z-20">
+      {/* Improved scroll indicator with smoother animation */}
+      <motion.div 
+        className="absolute bottom-12 left-0 right-0 z-20"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 1.8, duration: 1 }}
+      >
         <div className="mx-auto px-4">
           <div className="flex justify-center">
             <motion.a 
               href="#about" 
-              className="flex flex-col items-center text-white opacity-80 hover:opacity-100 transition-opacity"
-              whileHover={{ opacity: 1 }}
+              className="group flex flex-col items-center text-white/70 hover:text-white transition-colors duration-300"
             >
               <motion.span 
-                className="text-sm mb-2 font-light tracking-wider"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 1.5, duration: 1 }}
+                className="text-xs mb-3 font-light tracking-widest"
               >
-                DISCOVER
+                SCROLL TO DISCOVER
               </motion.span>
               <motion.div
+                className="w-8 h-8 rounded-full border border-white/30 flex items-center justify-center group-hover:border-white/60 transition-colors duration-300"
                 animate={{ 
-                  y: [0, 10, 0],
+                  y: [0, 8, 0],
                 }}
                 transition={{ 
                   repeat: Infinity, 
-                  duration: 2,
+                  duration: 2.5,
                   ease: "easeInOut" 
                 }}
               >
-                <ArrowDown size={24} />
+                <ArrowDown size={16} />
               </motion.div>
             </motion.a>
           </div>
         </div>
-      </div>
+      </motion.div>
 
-      {/* Decorative elements with Framer Motion */}
+      {/* Enhanced decorative elements */}
       <motion.div 
-        className="absolute top-0 right-0 h-64 w-64 bg-indigo-500/10 rounded-full blur-3xl z-10"
+        className="absolute top-1/4 right-1/6 h-96 w-96 bg-indigo-500/10 rounded-full blur-3xl z-10"
         initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
+        animate={{ opacity: 0.6 }}
         transition={{ duration: 2 }}
       />
       <motion.div 
-        className="absolute bottom-0 left-1/4 h-40 w-40 bg-indigo-600/10 rounded-full blur-3xl z-10"
+        className="absolute -bottom-20 left-1/4 h-80 w-80 bg-purple-600/10 rounded-full blur-3xl z-10"
         initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
+        animate={{ opacity: 0.5 }}
         transition={{ duration: 2, delay: 0.5 }}
+      />
+      <motion.div 
+        className="absolute top-1/2 -left-20 h-60 w-60 bg-blue-600/10 rounded-full blur-3xl z-10"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 0.4 }}
+        transition={{ duration: 2, delay: 1 }}
       />
     </section>
   );
