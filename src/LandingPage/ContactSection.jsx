@@ -72,7 +72,7 @@ const ContactSection = () => {
       id="contact"
       className="py-32 bg-gradient-to-b from-white to-gray-50"
     >
-      <div className="max-w-10/12 mx-auto px-4">
+      <div className="w-full mx-auto px-4">
         <motion.div
           initial="hidden"
           whileInView="visible"
