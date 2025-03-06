@@ -1,24 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { Menu, X, ChevronDown } from "lucide-react";
-import {
-  Sheet,
-  SheetContent,
-  SheetTrigger,
-  SheetClose,
-} from "../components/ui/sheet";
-import {
-  NavigationMenu,
-  NavigationMenuContent,
-  NavigationMenuItem,
-  NavigationMenuLink,
-  NavigationMenuList,
-  NavigationMenuTrigger,
-} from "../components/ui/navigation-menu";
+import { Menu, X, Sun, Moon } from "lucide-react";
 import { Button } from "../components/ui/button";
-import { cn } from "../lib/utils"; // Make sure you have this utility function
+import { cn } from "../lib/utils";
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [darkMode, setDarkMode] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -29,188 +17,171 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  useEffect(() => {
+    if (darkMode) {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+  }, [darkMode]);
+
+  useEffect(() => {
+    // Prevent scrolling when mobile menu is open
+    if (mobileMenuOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+  }, [mobileMenuOpen]);
+
+  const navLinks = [
+    { label: "About", href: "#about" },
+    { label: "Gallery", href: "/gallery" },
+    { label: "Services", href: "#services" },
+    { label: "Contact", href: "#contact" },
+  ];
+
+  const toggleTheme = () => {
+    setDarkMode(!darkMode);
+  };
+
+  const toggleMobileMenu = () => {
+    setMobileMenuOpen(!mobileMenuOpen);
+  };
+
   return (
-    <nav
-      className={cn(
-        "fixed top-0 left-0 right-0 z-100 transition-all duration-300",
-        isScrolled
-          ? "bg-white/95 backdrop-blur-sm shadow-sm py-3"
-          : "bg-transparent py-5"
-      )}
-    >
-      <div className=" mx-auto px-18">
-        <div className="flex items-center justify-between">
-          {/* Logo */}
-          <a
-            href="/"
-            className="text-2xl md:text-3xl font-light tracking-tighter text-gray-900 flex items-center"
-          >
-            <span className="text-indigo-600 font-medium">Vastu</span>
-            <span
-              className={cn(
-                " hover:bg-indigo-100 text-neutral-100 hover:text-indigo-600 focus:bg-indigo-100 focus:text-indigo-600 focus:outline-none disabled:pointer-events-none disabled:opacity-100",
-                isScrolled ? " py-3 text-neutral-900" : "bg-transparent py-5"
-              )}
+    <>
+      <nav
+        className={cn(
+          "fixed top-0 left-0 right-0 z-40 transition-all duration-300",
+          isScrolled
+            ? "bg-white/80 dark:bg-gray-900/90 backdrop-blur-md shadow-lg py-3"
+            : "bg-transparent py-6"
+        )}
+      >
+        <div className="max-w-full mx-auto px-4 md:px-8 lg:max-w-7xl">
+          <div className="flex items-center justify-between">
+            {/* Logo */}
+            <a
+              href="/"
+              className="group relative z-50 flex items-center space-x-1 font-sans"
             >
-              Decor
-            </span>
-          </a>
+              <div className="relative rounded-lg px-3 py-1 bg-white dark:bg-gray-900 border border-indigo-200 dark:border-indigo-800">
+                <span className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-indigo-500 to-purple-600">
+                  Vastu
+                </span>
+                <span className={cn(
+                  "text-2xl font-light transition-colors",
+                  "text-gray-800 dark:text-gray-200"
+                )}>
+                  Decor
+                </span>
+              </div>
+            </a>
 
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-1">
-            <NavigationMenu>
-              <NavigationMenuList>
-                <NavigationMenuItem>
-                  <NavigationMenuLink
-                    href="#about"
+            {/* Desktop Navigation */}
+            <div className="hidden md:flex items-center space-x-1">
+              <div className="flex rounded-full bg-gray-100/80 dark:bg-gray-800/80 backdrop-blur-sm mx-4">
+                {navLinks.map((link) => (
+                  <a
+                    key={link.label}
+                    href={link.href}
                     className={cn(
-                      "group inline-flex h-10 w-max items-center justify-center rounded-md px-4 py-2 text-lg font-medium transition-colors hover:bg-indigo-100 text-neutral-100 hover:text-indigo-600 focus:bg-indigo-100 focus:text-indigo-600 focus:outline-none disabled:pointer-events-none disabled:opacity-100",
-                      isScrolled
-                        ? " py-3 text-neutral-900"
-                        : "bg-transparent py-5"
+                      "px-4 py-2 text-sm font-medium rounded-full transition-all duration-300",
+                      "hover:text-indigo-600 dark:hover:text-indigo-400",
+                      "text-gray-800 dark:text-gray-200"
                     )}
                   >
-                    About
-                  </NavigationMenuLink>
-                </NavigationMenuItem>
+                    {link.label}
+                  </a>
+                ))}
+              </div>
 
-                <NavigationMenuItem>
-                  <NavigationMenuLink
-                    href="/gallery"
-                    className={cn(
-                      "group inline-flex h-10 w-max items-center justify-center rounded-md px-4 py-2 text-lg font-medium transition-colors hover:bg-indigo-100 text-neutral-100 hover:text-indigo-600 focus:bg-indigo-100 focus:text-indigo-600 focus:outline-none disabled:pointer-events-none disabled:opacity-100",
-                      isScrolled
-                        ? " py-3 text-neutral-900"
-                        : "bg-transparent py-5"
-                    )}
-                  >
-                    Gallery
-                  </NavigationMenuLink>
-                </NavigationMenuItem>
-                <NavigationMenuItem>
-                  <NavigationMenuLink
-                    href="#services"
-                    className={cn(
-                      "group inline-flex h-10 w-max items-center justify-center rounded-md px-4 py-2 text-lg font-medium transition-colors hover:bg-indigo-100 text-neutral-100 hover:text-indigo-600 focus:bg-indigo-100 focus:text-indigo-600 focus:outline-none disabled:pointer-events-none disabled:opacity-100",
-                      isScrolled
-                        ? " py-3 text-neutral-900"
-                        : "bg-transparent py-5"
-                    )}
-                  >
-                    Services
-                  </NavigationMenuLink>
-                </NavigationMenuItem>
+              <div className="flex items-center space-x-2">
+                <button
+                  onClick={toggleTheme}
+                  className="flex items-center justify-center rounded-full h-10 w-10 bg-gray-100/80 dark:bg-gray-800/80 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
+                >
+                  {darkMode ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
+                </button>
+                
+                <a 
+                  href="#consultation"
+                  className="inline-flex items-center justify-center rounded-full px-6 py-2 bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-indigo-600 hover:to-purple-700 text-white shadow-md hover:shadow-lg transition-all duration-300 font-medium"
+                >
+                  Book Consultation
+                </a>
+              </div>
+            </div>
 
-                <NavigationMenuItem>
-                  <NavigationMenuLink
-                    href="#contact"
-                    className={cn(
-                      "group inline-flex h-10 w-max items-center justify-center rounded-md px-4 py-2 text-lg font-medium transition-colors hover:bg-indigo-100 text-neutral-100 hover:text-indigo-600 focus:bg-indigo-100 focus:text-indigo-600 focus:outline-none disabled:pointer-events-none disabled:opacity-100",
-                      isScrolled
-                        ? " py-3 text-neutral-900"
-                        : "bg-transparent py-5"
-                    )}
-                  >
-                    Contact
-                  </NavigationMenuLink>
-                </NavigationMenuItem>
-              </NavigationMenuList>
-            </NavigationMenu>
-
-            <Button className="ml-4 bg-indigo-600 hover:bg-indigo-700 text-lg text-white">
-              Book Consultation
-            </Button>
+            {/* Mobile Navigation Trigger */}
+            <div className="flex items-center space-x-2 md:hidden">
+              <button
+                onClick={toggleTheme}
+                className={cn(
+                  "flex items-center justify-center rounded-full h-10 w-10 transition-colors",
+                  isScrolled
+                    ? "bg-gray-100/80 dark:bg-gray-800/80 text-gray-700 dark:text-gray-300"
+                    : "bg-white/20 text-gray-800 dark:text-gray-200"
+                )}
+              >
+                {darkMode ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
+              </button>
+              
+              <button 
+                onClick={toggleMobileMenu}
+                className={cn(
+                  "z-50 flex items-center justify-center rounded-full h-10 w-10 transition-colors",
+                  isScrolled
+                    ? "bg-gray-100/80 dark:bg-gray-800/80 text-gray-700 dark:text-gray-300"
+                    : "bg-white/20 text-gray-800 dark:text-gray-200"
+                )}
+              >
+                {mobileMenuOpen ? (
+                  <X className="h-5 w-5" />
+                ) : (
+                  <Menu className="h-5 w-5" />
+                )}
+              </button>
+            </div>
           </div>
+        </div>
+      </nav>
 
-          {/* Mobile Navigation */}
-          <div className="md:hidden">
-            <Sheet>
-              <SheetTrigger asChild>
-                <Button variant="ghost" size="icon">
-                  <Menu className="h-6 w-6" />
-                  <span className="sr-only">Toggle menu</span>
-                </Button>
-              </SheetTrigger>
-              <SheetContent side="right" className="w-[300px] sm:w-[350px]">
-                <div className="flex flex-col h-full">
-                  <div className="flex items-center justify-between pb-4 border-b">
-                    <a
-                      href="/"
-                      className="text-2xl font-light tracking-tighter"
-                    >
-                      <span className="text-indigo-600 font-medium">Vastu</span>
-                      <span
-                        className={cn(
-                          " hover:bg-indigo-100 text-neutral-900 hover:text-indigo-600 focus:bg-indigo-100 focus:text-indigo-600 focus:outline-none disabled:pointer-events-none disabled:opacity-100",
-                          isScrolled
-                            ? " py-3 text-neutral-900"
-                            : "bg-transparent py-5"
-                        )}
-                      >
-                        Decor
-                      </span>
-                    </a>
-                    <SheetClose asChild>
-                      <Button variant="ghost" size="icon">
-                        <X className="h-5 w-5" />
-                        <span className="sr-only">Close</span>
-                      </Button>
-                    </SheetClose>
-                  </div>
+      {/* Mobile Menu - Full screen overlay */}
+      <div 
+        className={cn(
+          "fixed inset-0 z-30 bg-white dark:bg-gray-900 transition-all duration-300 md:hidden",
+          mobileMenuOpen ? "opacity-100" : "opacity-0 pointer-events-none"
+        )}
+      >
+        <div className="flex flex-col h-full p-6 pt-24">
+          <nav className="flex flex-col gap-4">
+            {navLinks.map((link) => (
+              <a
+                key={link.label}
+                href={link.href}
+                onClick={() => setMobileMenuOpen(false)}
+                className="group flex items-center py-4 text-xl font-medium text-gray-800 dark:text-gray-200 border-b border-gray-100 dark:border-gray-800 transition-colors"
+              >
+                <span className="inline-block w-0 group-hover:w-6 transition-all duration-300 h-px bg-indigo-500 mr-0 group-hover:mr-3"></span>
+                {link.label}
+              </a>
+            ))}
+          </nav>
 
-                  <nav className="flex flex-col gap-4 py-6">
-                    <SheetClose asChild>
-                      <a
-                        href="#about"
-                        className="px-2 py-3 text-lg font-medium hover:text-indigo-600 transition-colors"
-                      >
-                        About
-                      </a>
-                    </SheetClose>
-                    <SheetClose asChild>
-                      <a
-                        href="#contact"
-                        className="px-2 py-3 text-lg font-medium hover:text-indigo-600 transition-colors"
-                      >
-                        Gallery
-                      </a>
-                    </SheetClose>
-
-                    <div className="relative">
-                      <SheetClose asChild>
-                        <a
-                          href="#contact"
-                          className="px-2 py-3 text-lg font-medium hover:text-indigo-600 transition-colors"
-                        >
-                          Services
-                        </a>
-                      </SheetClose>
-                    </div>
-
-                    <SheetClose asChild>
-                      <a
-                        href="#contact"
-                        className="px-2 py-3 text-lg font-medium hover:text-indigo-600 transition-colors"
-                      >
-                        Contact
-                      </a>
-                    </SheetClose>
-                  </nav>
-
-                  <div className="mt-auto">
-                    <SheetClose asChild>
-                      <Button className="w-full bg-indigo-600 hover:bg-indigo-700">
-                        Book Consultation
-                      </Button>
-                    </SheetClose>
-                  </div>
-                </div>
-              </SheetContent>
-            </Sheet>
+          <div className="mt-auto pb-8">
+            <a 
+              href="#consultation"
+              onClick={() => setMobileMenuOpen(false)}
+              className="inline-flex w-full items-center justify-center rounded-full px-6 py-4 bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-indigo-600 hover:to-purple-700 text-white shadow-md hover:shadow-lg transition-all duration-300 font-medium text-lg"
+            >
+              Book Consultation
+            </a>
           </div>
         </div>
       </div>
-    </nav>
+    </>
   );
 };
 

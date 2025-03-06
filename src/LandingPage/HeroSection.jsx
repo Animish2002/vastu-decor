@@ -5,7 +5,7 @@ import heroimage from "../assets/heroimage3.jpeg";
 
 const HeroSection = () => {
   return (
-    <section className="relative h-screen overflow-hidden">
+    <section className="relative h-screen overflow-hidden w-full">
       {/* Overlay gradient with improved opacity balance */}
       <div className="absolute inset-0 bg-gradient-to-r from-black via-black/50 to-transparent z-10"></div>
       <motion.div 
@@ -23,7 +23,7 @@ const HeroSection = () => {
       
       {/* Content container with staggered animations */}
       <div className="relative z-20 h-full flex items-center">
-        <div className="px-18">
+        <div className="md:px-18 px-4">
           <motion.div 
             className="max-w-2xl"
             initial="hidden"
@@ -39,7 +39,7 @@ const HeroSection = () => {
             }}
           >
             <motion.h1 
-              className="text-5xl md:text-6xl font-semibold text-white mb-6 leading-tight tracking-tight"
+              className="text-4xl md:text-6xl font-semibold text-white mb-6 leading-tight tracking-tight"
               variants={{
                 hidden: { opacity: 0, y: 20 },
                 visible: {
@@ -53,7 +53,7 @@ const HeroSection = () => {
             </motion.h1>
             
             <motion.p 
-              className="text-xl text-gray-200 mb-10 leading-relaxed max-w-xl"
+              className="md:text-xl text-lg text-gray-200 mb-10 leading-relaxed max-w-xl"
               variants={{
                 hidden: { opacity: 0, y: 20 },
                 visible: {
@@ -68,7 +68,7 @@ const HeroSection = () => {
             </motion.p>
             
             <motion.div 
-              className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 ml-12"
+              className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 md:ml-12"
               variants={{
                 hidden: { opacity: 0, y: 20 },
                 visible: {
