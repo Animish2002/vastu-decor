@@ -45,14 +45,14 @@ export const BentoGridItem = ({
       
       {header}
       <motion.div
-        className="absolute bottom-28 right-9 bg-white bg-opacity-80 p-2 rounded-full"
+        className="absolute bottom-28 right-9 bg-neutral-200 bg-opacity-25 p-2 rounded-full"
         variants={{
           initial: { rotate: 0 },
           hover: { rotate: -45 },
         }}
         transition={{ duration: 0.3 }}
       >
-        <IconArrowRight className="h-6 w-6 text-neutral-800" />
+        <IconArrowRight className="h-6 w-6 text-neutral-800 font-bold" />
       </motion.div>
       <div className="group-hover/bento:translate-x-2 transition duration-200">
         <div className="font-sans font-bold text-neutral-600 dark:text-neutral-200 mt-1 heading text-xl">
