@@ -87,7 +87,7 @@ const HeroSection = () => {
               }}
             >
               <motion.button
-                className="group bg-gradient-to-r from-indigo-500 to-purple-600 text-white px-8 py-4 rounded-full hover:shadow-lg hover:shadow-indigo-500/30 transition-all duration-300 flex items-center justify-center"
+                className="group bg-gradient-to-r from-indigo-500 to-purple-600 text-white md:px-8 md:py-4 py-3 md:min-w-52 w-60 rounded-full hover:shadow-lg hover:shadow-indigo-500/30 transition-all duration-300 flex items-center justify-center"
                 whileHover={{ scale: 1.03 }}
                 whileTap={{ scale: 0.98 }}
                 onClick={() => {
@@ -106,7 +106,7 @@ const HeroSection = () => {
               </motion.button>
 
               <motion.button
-                className="bg-white/10 backdrop-blur-sm text-white border border-white/20 px-8 py-4 rounded-full hover:bg-white/20 transition-all duration-300 flex items-center justify-center"
+                className="bg-white/10 backdrop-blur-sm text-white border border-white/20 md:px-8 md:py-4 py-3 md:min-w-52 w-60 rounded-full hover:bg-white/20 transition-all duration-300 flex items-center justify-center"
                 whileHover={{ scale: 1.03 }}
                 whileTap={{ scale: 0.98 }}
                 onClick={() =>

@@ -29,7 +29,7 @@ export function BentoGridDemo() {
           you
         </p>
       </div>
-      <BentoGrid className="max-w-7xl mx-auto">
+      <BentoGrid className="max-w-7xl mx-auto px-4">
         {items.map((item, i) => (
           <BentoGridItem
             key={i}
