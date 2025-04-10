@@ -10,6 +10,12 @@ import {
   IconSignature,
   IconTableColumn,
 } from "@tabler/icons-react";
+import livingRoom from "../assets/livingroom.jpg";
+import bedroom from "../assets/bedroom-jpg.jpg";
+import kitchen from "../assets/kitchen.jpg";
+import bathroom from "../assets/bathroom.jpg";
+import wardrobe2 from "../assets/wardrobe2.png";
+import painting from "../assets/painting.jpg";
 
 export function BentoGridDemo() {
   return (
@@ -38,51 +44,105 @@ export function BentoGridDemo() {
     </>
   );
 }
-const Skeleton = () => (
-  <div className="flex flex-1 w-full h-full min-h-[10rem] rounded-xl bg-gradient-to-br from-neutral-200 dark:from-neutral-900 dark:to-neutral-800 to-neutral-100"></div>
-);
+
 const items = [
   {
-    title: "The Dawn of Innovation",
-    description: "Explore the birth of groundbreaking ideas and inventions.",
-    header: <Skeleton />,
-    icon: <IconClipboardCopy className="h-4 w-4 text-neutral-500" />,
-  },
-  {
-    title: "The Digital Revolution",
-    description: "Dive into the transformative power of technology.",
-    header: <Skeleton />,
-    icon: <IconFileBroken className="h-4 w-4 text-neutral-500" />,
-  },
-  {
-    title: "The Art of Design",
-    description: "Discover the beauty of thoughtful and functional design.",
-    header: <Skeleton />,
-    icon: <IconSignature className="h-4 w-4 text-neutral-500" />,
-  },
-  {
-    title: "The Power of Communication",
+    title: "Living Room",
     description:
-      "Understand the impact of effective communication in our lives.",
-    header: <Skeleton />,
-    icon: <IconTableColumn className="h-4 w-4 text-neutral-500" />,
+      "Create a warm and inviting atmosphere with a stylish living room that reflects your personality.",
+    header: (
+      <div className="flex flex-1 w-full h-full min-h-[10rem] rounded-xl overflow-hidden">
+        <img
+          src={livingRoom}
+          alt="Modern living room with comfortable seating and elegant design"
+          className="w-full h-full object-cover"
+        />
+      </div>
+    ),
   },
   {
-    title: "The Pursuit of Knowledge",
-    description: "Join the quest for understanding and enlightenment.",
-    header: <Skeleton />,
-    icon: <IconArrowWaveRightUp className="h-4 w-4 text-neutral-500" />,
+    title: "Bedroom",
+    description:
+      "Transform your bedroom into a serene retreat with elegant furniture, soothing colors and a touch of art.",
+    header: (
+      <div className="flex flex-1 w-full h-full min-h-[10rem] rounded-xl overflow-hidden">
+        <img
+          src={bedroom}
+          alt="Elegant bedroom design with soft lighting and comfortable bedding"
+          className="w-full h-full object-cover"
+        />
+      </div>
+    ),
   },
   {
-    title: "The Joy of Creation",
-    description: "Experience the thrill of bringing ideas to life.",
-    header: <Skeleton />,
-    icon: <IconBoxAlignTopLeft className="h-4 w-4 text-neutral-500" />,
+    title: "False Ceiling",
+    description:
+      "Add an extra layer of sophistication to your room with a beautifully designed false ceiling.",
+    header: (
+      <div className="flex flex-1 w-full h-full min-h-[10rem] rounded-xl overflow-hidden">
+        <img
+          src="/api/placeholder/800/500"
+          alt="Modern false ceiling with recessed lighting and elegant design"
+          className="w-full h-full object-cover"
+        />
+      </div>
+    ),
   },
   {
-    title: "The Spirit of Adventure",
-    description: "Embark on exciting journeys and thrilling discoveries.",
-    header: <Skeleton />,
+    title: "Wardrobe",
+    description:
+      "Design a wardrobe that reflects your personal style and adds a touch of glamour to your home.",
+    header: (
+      <div className="flex flex-1 w-full h-full min-h-[10rem] rounded-xl overflow-hidden">
+        <img
+          src={wardrobe2}
+          alt="Custom built-in wardrobe with elegant storage solutions"
+          className="w-full h-full object-cover"
+        />
+      </div>
+    ),
+  },
+  {
+    title: "Kitchen",
+    description:
+      "Create a kitchen that is both functional and beautiful, with stylish appliances and elegant countertops.",
+    header: (
+      <div className="flex flex-1 w-full h-full min-h-[10rem] rounded-xl overflow-hidden">
+        <img
+          src={kitchen}
+          alt="Modern kitchen with high-end appliances and elegant countertops"
+          className="w-full h-full object-cover"
+        />
+      </div>
+    ),
+  },
+  {
+    title: "Bathrooms",
+    description:
+      "Transform your bathroom into a luxurious oasis with a stylish tub, elegant fixtures and a touch of art.",
+    header: (
+      <div className="flex flex-1 w-full h-full min-h-[10rem] rounded-xl overflow-hidden">
+        <img
+          src={bathroom}
+          alt="Luxury bathroom with modern fixtures and elegant design"
+          className="w-full h-full object-cover"
+        />
+      </div>
+    ),
+  },
+  {
+    title: "Painting",
+    description:
+      "Create a home that reflects your love of adventure and travel, with bold colors, eclectic furniture and a touch of the exotic.",
+    header: (
+      <div className="flex flex-1 w-full h-full min-h-[10rem] rounded-xl overflow-hidden">
+        <img
+          src={painting}
+          alt="Vibrant wall painting and artistic interior design elements"
+          className="w-full h-full object-cover"
+        />
+      </div>
+    ),
     icon: <IconBoxAlignRightFilled className="h-4 w-4 text-neutral-500" />,
   },
 ];
