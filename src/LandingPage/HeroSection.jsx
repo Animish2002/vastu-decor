@@ -41,17 +41,7 @@ const HeroSection = () => {
               },
             }}
           >
-            {/* Decorative line */}
-            <motion.div
-              className="w-20 h-1 bg-indigo-500 mb-6"
-              variants={{
-                hidden: { width: 0 },
-                visible: {
-                  width: 80,
-                  transition: { duration: 0.8, ease: "easeOut" },
-                },
-              }}
-            />
+           
 
             <motion.h1
               className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight"

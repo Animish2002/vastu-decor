@@ -21,12 +21,12 @@ export function BentoGridDemo() {
   return (
     <>
       <div className="text-center mb-16 mt-12">
-        <h2 className="text-3xl font-semibold mb-4 text-neutral-900 heading">
-          Our Featured Projects
+        <h2 className="text-4xl font-semibold mb-4 text-neutral-900 heading">
+          Inspiration for home interior designs
         </h2>
         <p className="text-neutral-600 max-w-2xl mx-auto">
-          Explore our diverse portfolio of residential, commercial, and cultural
-          projects that showcase our commitment to thoughtful design.
+          Give your home a new look with these interior design ideas curated for
+          you
         </p>
       </div>
       <BentoGrid className="max-w-7xl mx-auto">
