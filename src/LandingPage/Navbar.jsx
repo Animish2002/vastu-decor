@@ -67,11 +67,11 @@ const Navbar = () => {
               className="group relative z-50 flex items-center space-x-1 font-sans"
             >
               <div className="relative rounded-lg px-3 py-1 bg-white dark:bg-gray-900 border border-indigo-200 dark:border-indigo-800">
-                <span className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-indigo-500 to-purple-600">
+                <span className="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-indigo-500 to-purple-600 heading">
                   Vastu
                 </span>
                 <span className={cn(
-                  "text-2xl font-light transition-colors",
+                  "text-3xl font-light transition-colors heading",
                   "text-gray-800 dark:text-gray-200"
                 )}>
                   Decor
@@ -98,12 +98,12 @@ const Navbar = () => {
               </div>
 
               <div className="flex items-center space-x-2">
-                <button
+                {/* <button
                   onClick={toggleTheme}
                   className="flex items-center justify-center rounded-full h-10 w-10 bg-gray-100/80 dark:bg-gray-800/80 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
                 >
                   {darkMode ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
-                </button>
+                </button> */}
                 
                 <a 
                   href="#consultation"

@@ -15,7 +15,7 @@ export function BentoGridDemo() {
   return (
     <>
       <div className="text-center mb-16 mt-12">
-        <h2 className="text-3xl font-semibold mb-4 text-neutral-900">
+        <h2 className="text-3xl font-semibold mb-4 text-neutral-900 heading">
           Our Featured Projects
         </h2>
         <p className="text-neutral-600 max-w-2xl mx-auto">

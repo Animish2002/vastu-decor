@@ -64,8 +64,8 @@ const HeroSection = () => {
                 },
               }}
             >
-              <span className="block">Transforming</span>
-              <span className="bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 to-purple-500">
+              <span className="block heading">Transforming</span>
+              <span className="bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 to-purple-500 heading">
                 Vision Into Space
               </span>
             </motion.h1>

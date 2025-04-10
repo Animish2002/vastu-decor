@@ -129,3 +129,22 @@
   background-attachment: fixed;
   background-size: cover;
 }
+
+.bg-core-intro {
+  --color-core-intro-gradient: linear-gradient(
+      144.5deg,
+      #e8ffdd 65.09%,
+      #7dea7b 122.73%
+    ),
+    linear-gradient(311.31deg, #7ef89e 36.08%, #e5ffd9 106.98%);
+}
+
+@font-face{
+  font-family: 'Gilroy';
+  src: url("./fonts/Gilroy-Medium.ttf");
+}
+
+.heading {
+  font-family: "Gilroy", sans-serif;
+  font-weight: 400;
+}

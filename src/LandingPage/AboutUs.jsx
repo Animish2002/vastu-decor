@@ -56,7 +56,7 @@ const AboutUs = () => {
               </motion.span>
               
               <motion.h2 
-                className="text-3xl sm:text-4xl font-bold mb-6 text-slate-900 leading-tight"
+                className="text-3xl sm:text-4xl font-bold mb-6 text-slate-900 leading-tight heading"
                 variants={itemVariants}
               >
                 Designing Spaces That <span className="text-indigo-600 relative">

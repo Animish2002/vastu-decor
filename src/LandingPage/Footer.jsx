@@ -18,11 +18,11 @@ const Footer = () => {
   return (
     <footer className="bg-slate-900 text-slate-200 py-16">
       <div className="w-full mx-auto px-4 sm:px-6">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-10 gap-28">
           {/* Brand Column */}
           <div className="lg:col-span-4">
-            <h4 className="text-xl font-bold mb-4 text-white flex items-center">
-              <span className="bg-indigo-600 w-2 h-6 mr-2 inline-block rounded-sm"></span>
+            <h4 className="md:text-3xl text-xl mb-4 text-white flex items-center heading">
+             
               Vastu Decor & Home Solutions
             </h4>
             <p className="text-slate-400 mb-6 leading-relaxed">
@@ -79,26 +79,6 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* Newsletter Column */}
-          <div className="lg:col-span-3">
-            <h4 className="text-white font-semibold mb-4 tracking-wide">
-              Stay Updated
-            </h4>
-            <Separator className="mb-4 bg-slate-800 w-12 h-0.5" />
-            <p className="text-slate-400 mb-4 text-sm">
-              Subscribe to our newsletter for design tips and company updates.
-            </p>
-            <div className="flex space-x-2">
-              <Input
-                type="email"
-                placeholder="Your email"
-                className="bg-slate-800 border-slate-700 text-slate-300 focus:border-indigo-500 h-10"
-              />
-              <Button className="bg-indigo-600 hover:bg-indigo-700 h-10 px-4">
-                Subscribe
-              </Button>
-            </div>
-          </div>
 
           {/* Contact Column */}
           <div className="lg:col-span-3">
