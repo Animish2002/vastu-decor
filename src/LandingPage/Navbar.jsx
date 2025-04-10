@@ -116,7 +116,7 @@ const Navbar = () => {
 
             {/* Mobile Navigation Trigger */}
             <div className="flex items-center space-x-2 md:hidden">
-              <button
+              {/* <button
                 onClick={toggleTheme}
                 className={cn(
                   "flex items-center justify-center rounded-full h-10 w-10 transition-colors",
@@ -126,7 +126,7 @@ const Navbar = () => {
                 )}
               >
                 {darkMode ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
-              </button>
+              </button> */}
               
               <button 
                 onClick={toggleMobileMenu}
