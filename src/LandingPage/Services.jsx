@@ -1,79 +1,155 @@
 import React from "react";
 import { Card, CardContent } from "../components/ui/card";
+import InteriorPaint from "../assets/InteriorPainting.gif";
+import ExteriorPainting from "../assets/ExteriorPainting-1.gif";
+import grouting from "../assets/grouting.gif";
+import WaterProofing from "../assets/WaterProofing-1.gif";
+import deepCleaning from "../assets/deep-cleaning.gif";
+import image from "../assets/image.jpg";
 
 const Services = () => {
   const services = [
     {
-      title: "Architectural Design",
+      title: "Interior Painting",
       description:
-        "From concept to completion, we create spaces that harmonize form and function through thoughtful architectural design.",
-      icon: "🏛️",
+        "Transform your living spaces with premium finishes and expert color consultation.",
+      gifSrc: InteriorPaint,
+      altText: "Interior painting service",
+    },
+    {
+      title: "Exterior Painting",
+      description:
+        "Weather-resistant, long-lasting solutions that enhance curb appeal and protect your property.",
+      gifSrc: ExteriorPainting,
+      altText: "Exterior painting service",
+    },
+    {
+      title: "Waterproofing",
+      description:
+        "Protect your property from moisture damage and prevent costly repairs.",
+      gifSrc: WaterProofing,
+      altText: "Waterproofing service",
+    },
+    {
+      title: "Custom Furniture",
+      description:
+        "Handcrafted pieces designed to your specifications, combining aesthetics and functionality.",
+      gifSrc: "/api/placeholder/400/320",
+      altText: "Custom furniture",
     },
     {
       title: "Interior Design",
       description:
-        "We transform interiors into cohesive, expressive spaces that reflect the unique character of our clients and their needs.",
-      icon: "🪑",
+        "Full-service design that transforms spaces into harmonious environments reflecting your style.",
+      gifSrc: "/api/placeholder/400/320",
+      altText: "Interior design service",
     },
     {
-      title: "Sustainable Solutions",
+      title: "Kitchen Remodeling",
       description:
-        "Integrating eco-friendly practices and materials that minimize environmental impact without compromising on design excellence.",
-      icon: "🌱",
+        "Complete renovation from layout planning to installation, creating beautiful cooking spaces.",
+      gifSrc: "/api/placeholder/400/320",
+      altText: "Kitchen remodeling",
     },
     {
-      title: "3D Visualization",
+      title: "Tile Installation",
       description:
-        "Bringing designs to life with photorealistic renderings to help clients envision their future spaces with clarity.",
-      icon: "🖥️",
+        "Expert installation for floors, walls, and backsplashes using premium materials.",
+      gifSrc: "/api/placeholder/400/320",
+      altText: "Tile installation",
+    },
+    {
+      title: "Plumbing Services",
+      description:
+        "Professional installation and repairs for efficient water systems throughout your property.",
+      gifSrc: "/api/placeholder/400/320",
+      altText: "Plumbing service",
+    },
+    {
+      title: "Electrical Work",
+      description:
+        "Safe and reliable installations and repairs by certified professionals.",
+      gifSrc: "/api/placeholder/400/320",
+      altText: "Electrical work",
+    },
+    {
+      title: "Deep Cleaning",
+      description:
+        "Thorough cleaning services that restore shine and hygiene to all areas of your space.",
+      gifSrc: deepCleaning,
+      altText: "Deep cleaning service",
     },
   ];
 
   return (
-    <section id="services" className="py-20 bg-gray-50">
-      <div className=" mx-auto px-4">
+    <section
+      id="services"
+      className="py-24 bg-gradient-to-b from-gray-50 to-white"
+    >
+      <div className="max-w-7xl mx-auto px-4 sm:px-6">
         <div className="text-center mb-16">
-          <h2 className="text-3xl font-semibold mb-4 text-neutral-900 heading">
+          <h2 className="text-4xl font-bold mb-4 text-gray-900 relative inline-block heading">
             Our Services
           </h2>
-          <p className="text-neutral-600 max-w-2xl mx-auto">
-            We offer comprehensive design services tailored to your unique
-            needs, guiding projects from concept to completion.
+          <p className="text-gray-600 max-w-3xl mx-auto text-lg mt-6">
+            Comprehensive home improvement and design services delivered with
+            precision and artistry, transforming ordinary spaces into
+            extraordinary environments.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-5">
           {services.map((service, index) => (
             <Card
               key={index}
-              className="overflow-hidden hover:shadow-xl transition-shadow bg-white"
+              className="overflow-hidden hover:shadow-xl transition-all duration-300 bg-white border-0 rounded-lg group"
             >
-              <CardContent className="p-6">
-                <div className="text-4xl mb-4">{service.icon}</div>
-                <h3 className="text-xl font-bold mb-3 text-gray-900">
+              <div className="h-40 overflow-hidden p-4">
+                <img
+                  src={service.gifSrc}
+                  alt={service.altText}
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                />
+              </div>
+              <CardContent className="p-4">
+                <h3 className="text-lg font-bold text-gray-900 heading">
                   {service.title}
                 </h3>
-                <p className="text-gray-700">{service.description}</p>
               </CardContent>
             </Card>
           ))}
         </div>
 
-        <div className="mt-16 bg-rectangle rounded-xl overflow-hidden shadow-xl">
+        <div className="mt-20 rounded-xl overflow-hidden shadow-2xl bg-gradient-to-r bg-slate-700">
           <div className="grid grid-cols-1 lg:grid-cols-2">
-            <div className="p-12 flex flex-col justify-center">
-              <h3 className="text-2xl font-bold mb-4 text-white">
-                Ready to Start Your Project?
+            <div className="p-10 lg:p-16 flex flex-col justify-center">
+              <span className="text-indigo-300 font-medium text-sm uppercase tracking-wider mb-2 heading">
+                Expert Team
+              </span>
+              <h3 className="text-3xl font-bold mb-6 text-white heading">
+                Ready to Transform Your Space?
               </h3>
-              <p className="text-indigo-100 mb-6">
-                Book a consultation with our team to discuss your vision and how
-                we can bring it to life.
+              <p className="text-indigo-100 mb-8 text-lg">
+                Schedule a free consultation with our design experts and receive
+                a personalized quote tailored to your project needs.
               </p>
-              <button className="bg-white text-indigo-900 px-8 py-3 rounded-md hover:bg-gray-100 transition-colors self-start">
-                Schedule Consultation
-              </button>
+              <div className="flex flex-wrap gap-4">
+                <button className="bg-white text-indigo-900 px-8 py-3 rounded-md hover:bg-indigo-50 transition-colors font-medium shadow-lg">
+                  Get a Free Quote
+                </button>
+                <button className="border border-white text-white px-8 py-3 rounded-md hover:bg-slate-800 transition-colors font-medium">
+                  View Our Portfolio
+                </button>
+              </div>
             </div>
-            <div className="relative h-64 lg:h-auto"></div>
+            <div className="relative h-72 lg:h-auto bg-indigo-400 flex items-center justify-center overflow-hidden">
+              <img
+                src={image}
+                alt="Service showcase"
+                className="object-cover w-full h-full"
+              />
+             
+            </div>
           </div>
         </div>
       </div>

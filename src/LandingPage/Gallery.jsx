@@ -15,6 +15,7 @@ import Navbar from "./Navbar";
 import { Menu } from "lucide-react";
 import Footer from "./Footer";
 import ContactSection from "./ContactSection";
+import { cn } from "../lib/utils";
 
 const Gallery = () => {
   // Sample projects data - replace with your actual projects
@@ -153,8 +154,24 @@ const Gallery = () => {
     >
       <div className="mx-auto px-4 py-6 shadow-lg">
         <div className="flex justify-between items-center">
-          <a href="/" className="text-3xl font-light tracking-tighter">
-            Vastu Decor & Home Solutions
+          {/* Logo */}
+          <a
+            href="/"
+            className="group relative z-50 flex items-center space-x-1 font-sans"
+          >
+            <div className="relative rounded-lg px-3 py-1 bg-white dark:bg-gray-500 border border-indigo-200 dark:border-indigo-800">
+              <span className="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-indigo-500 to-purple-600 heading">
+                Vastu
+              </span>
+              <span
+                className={cn(
+                  "text-3xl font-light transition-colors heading",
+                  "text-gray-800 dark:text-gray-200"
+                )}
+              >
+                Decor
+              </span>
+            </div>
           </a>
 
           <div className="hidden md:flex items-center space-x-8">
