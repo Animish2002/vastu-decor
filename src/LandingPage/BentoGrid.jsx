@@ -53,7 +53,7 @@ const items = [
     header: (
       <div className="flex flex-1 w-full h-full min-h-[10rem] rounded-xl overflow-hidden">
         <img
-          src={livingRoom}
+          src="https://res.cloudinary.com/dkv3bx51z/image/upload/v1744996428/livingroom_xktxkk.jpg"
           alt="Modern living room with comfortable seating and elegant design"
           className="w-full h-full object-cover"
         />
@@ -67,7 +67,7 @@ const items = [
     header: (
       <div className="flex flex-1 w-full h-full min-h-[10rem] rounded-xl overflow-hidden">
         <img
-          src={bedroom}
+          src="https://res.cloudinary.com/dkv3bx51z/image/upload/v1744996417/bedroom-jpg_ey7jle.jpg"
           alt="Elegant bedroom design with soft lighting and comfortable bedding"
           className="w-full h-full object-cover"
         />
@@ -81,7 +81,7 @@ const items = [
     header: (
       <div className="flex flex-1 w-full h-full min-h-[10rem] rounded-xl overflow-hidden">
         <img
-          src="/api/placeholder/800/500"
+          src="https://res.cloudinary.com/dkv3bx51z/image/upload/v1744996148/IMG20241205151433_vv2lre.jpg"
           alt="Modern false ceiling with recessed lighting and elegant design"
           className="w-full h-full object-cover"
         />
@@ -95,7 +95,7 @@ const items = [
     header: (
       <div className="flex flex-1 w-full h-full min-h-[10rem] rounded-xl overflow-hidden">
         <img
-          src={wardrobe2}
+          src="https://res.cloudinary.com/dkv3bx51z/image/upload/v1744996430/wardrobe2_cylnj9.avif"
           alt="Custom built-in wardrobe with elegant storage solutions"
           className="w-full h-full object-cover"
         />
@@ -109,7 +109,7 @@ const items = [
     header: (
       <div className="flex flex-1 w-full h-full min-h-[10rem] rounded-xl overflow-hidden">
         <img
-          src={kitchen}
+          src="https://res.cloudinary.com/dkv3bx51z/image/upload/v1744996426/kitchen_f10cst.jpg"
           alt="Modern kitchen with high-end appliances and elegant countertops"
           className="w-full h-full object-cover"
         />
@@ -123,7 +123,7 @@ const items = [
     header: (
       <div className="flex flex-1 w-full h-full min-h-[10rem] rounded-xl overflow-hidden">
         <img
-          src={bathroom}
+          src="https://res.cloudinary.com/dkv3bx51z/image/upload/v1744996417/bathroom_evgkat.jpg"
           alt="Luxury bathroom with modern fixtures and elegant design"
           className="w-full h-full object-cover"
         />
@@ -137,7 +137,7 @@ const items = [
     header: (
       <div className="flex flex-1 w-full h-full min-h-[10rem] rounded-xl overflow-hidden">
         <img
-          src={painting}
+          src="https://res.cloudinary.com/dkv3bx51z/image/upload/v1744996429/painting_zobqgm.jpg"
           alt="Vibrant wall painting and artistic interior design elements"
           className="w-full h-full object-cover"
         />

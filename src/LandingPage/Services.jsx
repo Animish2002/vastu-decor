@@ -144,11 +144,10 @@ const Services = () => {
             </div>
             <div className="relative h-72 lg:h-auto bg-indigo-400 flex items-center justify-center overflow-hidden">
               <img
-                src={image}
+                src="https://res.cloudinary.com/dkv3bx51z/image/upload/v1744996424/image_brndrr.avif"
                 alt="Service showcase"
                 className="object-cover w-full h-full"
               />
-             
             </div>
           </div>
         </div>

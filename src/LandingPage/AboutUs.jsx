@@ -21,17 +21,12 @@ import {
   CarouselPrevious,
 } from "../components/ui/carousel";
 import useEmblaCarousel from "embla-carousel-react";
-import image1 from "../assets/heroimage1.jpeg";
-import image2 from "../assets/heroimage2.jpeg";
-import image3 from "../assets/heroimage3.jpeg";
-import image4 from "../assets/heroimage4.jpeg";
-import image5 from "../assets/heroimage5.jpeg";
 import Autoplay from "embla-carousel-autoplay";
 
 const AboutUs = () => {
   const stats = [
     {
-      value: "7+",
+      value: "8+",
       label: "Years Experience",
       icon: <Clock className="h-5 w-5" />,
     },
@@ -40,7 +35,7 @@ const AboutUs = () => {
       label: "Projects Completed",
       icon: <Briefcase className="h-5 w-5" />,
     },
-    { value: "18", label: "Team Members", icon: <Users className="h-5 w-5" /> },
+    { value: "30", label: "Team Members", icon: <Users className="h-5 w-5" /> },
   ];
 
   const services = [
@@ -50,13 +45,23 @@ const AboutUs = () => {
     "Sustainable Architecture",
   ];
 
+  const image1 =
+    "https://res.cloudinary.com/dkv3bx51z/image/upload/v1744996092/PHOTO-2024-10-19-13-59-02_1_hgtxse.jpg";
+  const image2 =
+    "https://res.cloudinary.com/dkv3bx51z/image/upload/v1744996060/eb6c2f404ac964f6d4b006d6694ee866_rfwg34.jpg";
+  const image3 =
+    "https://res.cloudinary.com/dkv3bx51z/image/upload/v1744998109/IMG_4229_fi8mss_el1quh.jpg";
+  const image4 =
+    "https://res.cloudinary.com/dkv3bx51z/image/upload/v1744996059/caf2f491ed8dbf054553e8148e995ddc_r0su0j.jpg";
+  const image5 =
+    "https://res.cloudinary.com/dkv3bx51z/image/upload/v1744996058/bad1ffe8332b31eaee696bba029b34f6_vg3v89.jpg";
+
   const carouselImages = [
     { src: image1, alt: "Studio Portrait" },
     { src: image2, alt: "Design Concept" },
     { src: image3, alt: "Team Working" },
     { src: image4, alt: "Project Showcase" },
     { src: image5, alt: "Interior Design" },
-    
   ];
 
   const containerVariants = {
@@ -291,8 +296,6 @@ const AboutUs = () => {
                 ))}
               </div>
             </motion.div>
-
-            
           </motion.div>
         </motion.div>
       </div>

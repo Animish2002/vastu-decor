@@ -1,7 +1,6 @@
 import React from "react";
 import { ChevronRight, ArrowDown, Play } from "lucide-react";
 import { motion } from "framer-motion";
-import heroimage from "../assets/heroimage3.jpeg";
 import { useNavigate } from "react-router-dom";
 
 const HeroSection = () => {
@@ -18,7 +17,7 @@ const HeroSection = () => {
         transition={{ duration: 15, ease: "easeOut" }}
       >
         <img
-          src={heroimage}
+          src="https://res.cloudinary.com/dkv3bx51z/image/upload/v1744996422/heroimage3_r12q0f.jpg"
           alt="Featured Architecture"
           className="h-full w-full object-cover object-center"
         />
@@ -41,8 +40,6 @@ const HeroSection = () => {
               },
             }}
           >
-           
-
             <motion.h1
               className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight"
               variants={{
