@@ -10,12 +10,6 @@ import {
   IconSignature,
   IconTableColumn,
 } from "@tabler/icons-react";
-import livingRoom from "../assets/livingroom.jpg";
-import bedroom from "../assets/bedroom-jpg.jpg";
-import kitchen from "../assets/kitchen.jpg";
-import bathroom from "../assets/bathroom.jpg";
-import wardrobe2 from "../assets/wardrobe2.png";
-import painting from "../assets/painting.jpg";
 
 export function BentoGridDemo() {
   return (

@@ -1,11 +1,6 @@
 import React from "react";
 import { Card, CardContent } from "../components/ui/card";
-import InteriorPaint from "../assets/InteriorPainting.gif";
-import ExteriorPainting from "../assets/ExteriorPainting-1.gif";
-import grouting from "../assets/grouting.gif";
-import WaterProofing from "../assets/WaterProofing-1.gif";
-import deepCleaning from "../assets/deep-cleaning.gif";
-import image from "../assets/image.jpg";
+
 
 const Services = () => {
   const services = [
@@ -13,21 +8,21 @@ const Services = () => {
       title: "Interior Painting",
       description:
         "Transform your living spaces with premium finishes and expert color consultation.",
-      gifSrc: InteriorPaint,
+      gifSrc: "https://res.cloudinary.com/dkv3bx51z/image/upload/v1744996425/InteriorPainting_rlxbma.gif",
       altText: "Interior painting service",
     },
     {
       title: "Exterior Painting",
       description:
         "Weather-resistant, long-lasting solutions that enhance curb appeal and protect your property.",
-      gifSrc: ExteriorPainting,
+      gifSrc: "https://res.cloudinary.com/dkv3bx51z/image/upload/v1744996419/ExteriorPainting-1_khby7z.gif",
       altText: "Exterior painting service",
     },
     {
       title: "Waterproofing",
       description:
         "Protect your property from moisture damage and prevent costly repairs.",
-      gifSrc: WaterProofing,
+      gifSrc: "https://res.cloudinary.com/dkv3bx51z/image/upload/v1744996431/WaterProofing-1_ewm0ei.gif",
       altText: "Waterproofing service",
     },
     {
@@ -76,7 +71,7 @@ const Services = () => {
       title: "Deep Cleaning",
       description:
         "Thorough cleaning services that restore shine and hygiene to all areas of your space.",
-      gifSrc: deepCleaning,
+      gifSrc: "https://res.cloudinary.com/dkv3bx51z/image/upload/v1744996419/deep-cleaning_ogi4fb.gif",
       altText: "Deep cleaning service",
     },
   ];
