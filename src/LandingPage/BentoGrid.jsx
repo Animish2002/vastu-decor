@@ -75,7 +75,7 @@ const items = [
     header: (
       <div className="flex flex-1 w-full h-full min-h-[10rem] rounded-xl overflow-hidden">
         <img
-          src="https://res.cloudinary.com/dkv3bx51z/image/upload/v1744996148/IMG20241205151433_vv2lre.jpg"
+          src="https://res.cloudinary.com/dkv3bx51z/image/upload/v1744996078/PHOTO-2024-10-19-11-49-47_wjkihr.jpg"
           alt="Modern false ceiling with recessed lighting and elegant design"
           className="w-full h-full object-cover"
         />
