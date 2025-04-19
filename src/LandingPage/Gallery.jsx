@@ -752,7 +752,7 @@ const Gallery = () => {
                         animate={{ scale: 1, opacity: 1 }}
                         transition={{ duration: 0.5 }}
                         src={selectedProject.image || selectedProject.thumbnail}
-                        alt={`Project ${selectedProject.id}`}
+                        alt={`Design Id ${selectedProject.id}`}
                         className={cn(
                           "max-w-full max-h-[70vh] object-contain",
                           selectedProject.orientation === "portrait"
