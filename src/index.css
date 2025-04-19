@@ -139,12 +139,36 @@
     linear-gradient(311.31deg, #7ef89e 36.08%, #e5ffd9 106.98%);
 }
 
-@font-face{
-  font-family: 'Gilroy';
+@font-face {
+  font-family: "Gilroy";
   src: url("./fonts/Gilroy-Medium.ttf");
 }
 
 .heading {
   font-family: "Gilroy", sans-serif;
   font-weight: 400;
+}
+
+.animate-gradient-x {
+  animation: gradient-x 15s ease infinite;
+}
+.bg-size-200 {
+  background-size: 200% 200%;
+}
+@keyframes gradient-x {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+Hide scrollbar for clean UI .scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
