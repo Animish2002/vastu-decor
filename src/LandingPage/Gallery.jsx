@@ -30,6 +30,7 @@ import { cn } from "../lib/utils";
 
 // Import your data
 import galleryData from "../GalleryLinks/data.json";
+import ContactSection from "./ContactSection";
 
 const Gallery = () => {
   // State management
@@ -900,6 +901,8 @@ const Gallery = () => {
           </motion.button>
         )}
       </AnimatePresence>
+
+      <ContactSection />
 
       {/* Footer with animated gradient border */}
       <footer className="bg-white dark:bg-gray-900 py-8 mt-16 border-t border-gray-100 dark:border-gray-800 relative">

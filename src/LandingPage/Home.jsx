@@ -24,7 +24,7 @@ const Home = () => {
       <BentoGridDemo />
 
       <Services />
-      <Testimonials />
+      {/* <Testimonials /> */}
       <ContactSection />
       <Footer />
     </motion.div>
