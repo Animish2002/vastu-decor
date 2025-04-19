@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useAnimation } from "framer-motion";
 import { Tabs, TabsList, TabsTrigger } from "../components/ui/tabs";
 import { Card } from "../components/ui/card";
 import { Input } from "../components/ui/input";
@@ -17,6 +17,7 @@ import {
   Heart,
   Share2,
   Download,
+  ArrowUp,
 } from "lucide-react";
 import {
   Dialog,
@@ -27,6 +28,7 @@ import {
 } from "../components/ui/dialog";
 import { Skeleton } from "../components/ui/skeleton";
 import { cn } from "../lib/utils";
+import { useSwipeable } from "react-swipeable"; // Make sure to install this package
 
 // Import your data
 import galleryData from "../GalleryLinks/data.json";
@@ -47,8 +49,13 @@ const Gallery = () => {
   const [isMuted, setIsMuted] = useState(true);
   const [likedProjects, setLikedProjects] = useState(new Set());
   const [scrollProgress, setScrollProgress] = useState(0);
+  const [modalFullscreen, setModalFullscreen] = useState(false);
   const videoRef = useRef(null);
+  const galleryRef = useRef(null);
   const projectsPerPage = 12;
+
+  // Controls for animations
+  const controls = useAnimation();
 
   // Initialize data
   useEffect(() => {
@@ -56,7 +63,16 @@ const Gallery = () => {
       setIsLoading(true);
       try {
         // Using imported data
-        setProjects(galleryData.projects);
+        const projectsWithHeight = galleryData.projects.map((project) => ({
+          ...project,
+          // Generate random heights for masonry layout
+          height:
+            project.orientation === "portrait"
+              ? Math.floor(Math.random() * 2) + 2 // 2-3 for portrait
+              : Math.floor(Math.random() * 1) + 1, // 1-1 for landscape
+        }));
+
+        setProjects(projectsWithHeight);
         setCategories(galleryData.categories);
 
         setTimeout(() => {
@@ -78,11 +94,16 @@ const Gallery = () => {
       const docHeight = document.body.offsetHeight - window.innerHeight;
       const scrollPercent = scrollTop / docHeight;
       setScrollProgress(scrollPercent);
+
+      // Animate gallery items on scroll
+      if (galleryRef.current && scrollTop > 100) {
+        controls.start({ opacity: 1, y: 0 });
+      }
     };
 
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [controls]);
 
   // Filter projects
   useEffect(() => {
@@ -150,8 +171,33 @@ const Gallery = () => {
       newIndex = currentIndex === 0 ? projects.length - 1 : currentIndex - 1;
     }
 
-    setSelectedProject(projects[newIndex]);
+    // Add transition animation
+    const exitDirection = direction === "next" ? -100 : 100;
+    const enterDirection = direction === "next" ? 100 : -100;
+
+    controls
+      .start({
+        x: exitDirection,
+        opacity: 0,
+        transition: { duration: 0.2 },
+      })
+      .then(() => {
+        setSelectedProject(projects[newIndex]);
+        controls.start({
+          x: 0,
+          opacity: 1,
+          transition: { duration: 0.3 },
+        });
+      });
   };
+
+  // Swipe handlers for mobile
+  const swipeHandlers = useSwipeable({
+    onSwipedLeft: () => navigateProject("next"),
+    onSwipedRight: () => navigateProject("prev"),
+    preventDefaultTouchmoveEvent: true,
+    trackMouse: false,
+  });
 
   // Toggle video mute status
   const toggleMute = () => {
@@ -159,6 +205,11 @@ const Gallery = () => {
       videoRef.current.muted = !videoRef.current.muted;
       setIsMuted(!isMuted);
     }
+  };
+
+  // Toggle fullscreen modal view
+  const toggleFullscreen = () => {
+    setModalFullscreen(!modalFullscreen);
   };
 
   // Toggle like status
@@ -253,26 +304,53 @@ const Gallery = () => {
     }
   };
 
-  // Loading skeleton with staggered animation
+  // Function to determine grid span for masonry layout
+  const getGridSpan = (project) => {
+    // Create different sized grid items based on project height property
+    switch (project.height) {
+      case 3:
+        return "col-span-1 row-span-2 md:col-span-1 md:row-span-2";
+      case 2:
+        return "col-span-1 row-span-1 md:col-span-1 md:row-span-1";
+      default:
+        return "col-span-1";
+    }
+  };
+
+  // Enhanced loading skeleton with masonry layout
   const GallerySkeleton = () => (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-      {Array(8)
+    <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 auto-rows-auto gap-4 md:gap-6">
+      {Array(12)
         .fill()
-        .map((_, i) => (
-          <motion.div
-            key={i}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4, delay: i * 0.05 }}
-            className="rounded-lg overflow-hidden"
-          >
-            <Skeleton className={i % 3 === 0 ? "h-80 w-full" : "h-64 w-full"} />
-            <div className="pt-3">
-              <Skeleton className="h-5 w-3/4 mb-2" />
-              <Skeleton className="h-4 w-1/2" />
-            </div>
-          </motion.div>
-        ))}
+        .map((_, i) => {
+          // Create varied skeleton sizes for masonry effect
+          const isLarge = i % 5 === 0;
+          const isMedium = i % 3 === 0 && !isLarge;
+
+          return (
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.4, delay: i * 0.05 }}
+              className={cn(
+                "rounded-lg overflow-hidden",
+                isLarge ? "col-span-2 row-span-2" : isMedium ? "row-span-2" : ""
+              )}
+            >
+              <Skeleton
+                className={cn(
+                  "w-full",
+                  isLarge ? "h-80 md:h-96" : isMedium ? "h-72" : "h-48 md:h-64"
+                )}
+              />
+              <div className="pt-3">
+                <Skeleton className="h-5 w-3/4 mb-2" />
+                <Skeleton className="h-4 w-1/2" />
+              </div>
+            </motion.div>
+          );
+        })}
     </div>
   );
 
@@ -520,11 +598,13 @@ const Gallery = () => {
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
                 transition={{ duration: 0.3 }}
+                ref={galleryRef}
               >
                 {filteredProjects.length > 0 ? (
                   <>
+                    {/* Masonry Grid Layout */}
                     <motion.div
-                      className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"
+                      className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 auto-rows-auto gap-3 md:gap-6"
                       variants={containerVariants}
                       initial="hidden"
                       animate="show"
@@ -533,14 +613,18 @@ const Gallery = () => {
                         <motion.div
                           key={project.id}
                           variants={itemVariants}
-                          whileHover={{ y: -8, scale: 1.02 }}
-                          className="group cursor-pointer"
+                          whileHover={{ y: -5, scale: 1.02 }}
+                          className={cn(
+                            "group cursor-pointer",
+                            getGridSpan(project)
+                          )}
                           onClick={() => setSelectedProject(project)}
                         >
-                          <Card className="overflow-hidden h-full hover:shadow-xl transition-all duration-300 border border-gray-100 dark:border-gray-700 bg-white/70 dark:bg-gray-800/70 backdrop-blur-sm">
-                            <div className="relative overflow-hidden">
+                          <Card className="overflow-hidden h-full hover:shadow-xl transition-all duration-300 border border-gray-100 dark:border-gray-700 bg-white/70 dark:bg-gray-800/70 backdrop-blur-sm rounded-xl">
+                            <div className="relative overflow-hidden h-full">
                               <div
                                 className={cn(
+                                  "h-full",
                                   getAspectRatioClass(project),
                                   "bg-gray-100 dark:bg-gray-700"
                                 )}
@@ -572,88 +656,88 @@ const Gallery = () => {
                                   />
                                 )}
                               </div>
-                              <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-center justify-center">
-                                <motion.div
-                                  initial={{ opacity: 0, scale: 0.5 }}
-                                  whileHover={{ opacity: 1, scale: 1 }}
-                                  transition={{ duration: 0.2 }}
-                                >
-                                  <ZoomIn className="text-white w-12 h-12 drop-shadow-lg" />
-                                </motion.div>
+
+                              {/* Hover overlay with gradient and zoom icon */}
+                              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 flex flex-col justify-between p-4">
+                                <div className="flex justify-end">
+                                  <motion.button
+                                    whileHover={{ scale: 1.2 }}
+                                    whileTap={{ scale: 0.9 }}
+                                    onClick={(e) => toggleLike(project.id, e)}
+                                    className={`p-2 rounded-full z-10 ${
+                                      likedProjects.has(project.id)
+                                        ? "bg-red-500 text-white"
+                                        : "bg-black/30 text-white hover:bg-black/50"
+                                    }`}
+                                  >
+                                    <Heart
+                                      className={`h-5 w-5 ${
+                                        likedProjects.has(project.id)
+                                          ? "fill-current"
+                                          : ""
+                                      }`}
+                                    />
+                                  </motion.button>
+                                </div>
+
+                                <div className="text-white">
+                                  <h3 className="font-medium text-lg mb-1 drop-shadow-lg">
+                                    {project.title || `Project ${project.id}`}
+                                  </h3>
+                                  <p className="text-sm text-gray-200">
+                                    {categories.find(
+                                      (c) => c.id === project.category
+                                    )?.name || project.category}
+                                  </p>
+                                </div>
                               </div>
-
-                              {/* Like button */}
-                              <motion.button
-                                whileHover={{ scale: 1.2 }}
-                                whileTap={{ scale: 0.9 }}
-                                onClick={(e) => toggleLike(project.id, e)}
-                                className={`absolute top-3 right-3 p-2 rounded-full z-10 ${
-                                  likedProjects.has(project.id)
-                                    ? "bg-red-500 text-white"
-                                    : "bg-black/30 text-white hover:bg-black/50"
-                                }`}
-                              >
-                                <Heart
-                                  className={`h-5 w-5 ${
-                                    likedProjects.has(project.id)
-                                      ? "fill-current"
-                                      : ""
-                                  }`}
-                                />
-                              </motion.button>
                             </div>
-
-                            <motion.div
-                              className="p-4"
-                              initial={{ opacity: 0, y: 10 }}
-                              whileInView={{ opacity: 1, y: 0 }}
-                              transition={{ delay: 0.1, duration: 0.3 }}
-                            >
-                              <h3 className="font-medium text-gray-900 dark:text-gray-100">
-                                {project.title || `Project ${project.id}`}
-                              </h3>
-                              <p className="text-sm text-gray-500 dark:text-gray-400">
-                                {categories.find(
-                                  (c) => c.id === project.category
-                                )?.name || project.category}
-                              </p>
-                            </motion.div>
                           </Card>
                         </motion.div>
                       ))}
                     </motion.div>
 
                     {/* Pagination controls with animations */}
-                    <div className="mt-8 flex justify-center items-center space-x-2">
-                      <Button
-                        variant="outline"
-                        size="sm"
-                        onClick={() =>
-                          setCurrentPage((prev) => Math.max(prev - 1, 1))
-                        }
-                        disabled={currentPage === 1}
+                    <div className="mt-12 flex justify-center items-center space-x-2">
+                      <motion.div
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
                       >
-                        <ChevronLeft className="h-4 w-4" />
-                        Previous
-                      </Button>
+                        <Button
+                          variant="outline"
+                          size="sm"
+                          onClick={() =>
+                            setCurrentPage((prev) => Math.max(prev - 1, 1))
+                          }
+                          disabled={currentPage === 1}
+                          className="border-indigo-200 dark:border-indigo-800 hover:bg-indigo-50 dark:hover:bg-indigo-900/20"
+                        >
+                          <ChevronLeft className="h-4 w-4 mr-2" /> Previous
+                        </Button>
+                      </motion.div>
 
                       <span className="text-sm">
                         Page {currentPage} of {totalPages}
                       </span>
 
-                      <Button
-                        variant="outline"
-                        size="sm"
-                        onClick={() =>
-                          setCurrentPage((prev) =>
-                            Math.min(prev + 1, totalPages)
-                          )
-                        }
-                        disabled={currentPage === totalPages}
+                      <motion.div
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
                       >
-                        Next
-                        <ChevronRight className="h-4 w-4" />
-                      </Button>
+                        <Button
+                          variant="outline"
+                          size="sm"
+                          onClick={() =>
+                            setCurrentPage((prev) =>
+                              Math.min(prev + 1, totalPages)
+                            )
+                          }
+                          disabled={currentPage === totalPages}
+                          className="border-indigo-200 dark:border-indigo-800 hover:bg-indigo-50 dark:hover:bg-indigo-900/20"
+                        >
+                          Next <ChevronRight className="h-4 w-4 ml-2" />
+                        </Button>
+                      </motion.div>
                     </div>
                   </>
                 ) : (
@@ -696,11 +780,12 @@ const Gallery = () => {
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
-                  className="flex flex-col h-full"
+                  className="flex flex-col md:h-[90vh] h-[70vh]"
                 >
                   <DialogHeader className="p-4 border-b border-gray-100 dark:border-gray-800">
                     <DialogTitle className="text-2xl font-bold text-gray-900 dark:text-gray-100">
-                      {selectedProject.title || `Project ${selectedProject.id}`}
+                      {selectedProject.title ||
+                        `Design Id ${selectedProject.id}`}
                     </DialogTitle>
                     <div className="text-sm text-gray-500 dark:text-gray-400 flex flex-wrap gap-2 mt-1">
                       <span>ID: {selectedProject.id}</span>
@@ -752,7 +837,7 @@ const Gallery = () => {
                         animate={{ scale: 1, opacity: 1 }}
                         transition={{ duration: 0.5 }}
                         src={selectedProject.image || selectedProject.thumbnail}
-                        alt={`Design Id ${selectedProject.id}`}
+                        alt={`Design Id: ${selectedProject.id}`}
                         className={cn(
                           "max-w-full max-h-[70vh] object-contain",
                           selectedProject.orientation === "portrait"
