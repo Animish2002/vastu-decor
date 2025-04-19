@@ -681,10 +681,10 @@ const Gallery = () => {
                                 </div>
 
                                 <div className="text-white">
-                                  <h3 className="font-medium text-lg mb-1 drop-shadow-lg">
+                                  <h3 className="font-medium md:text-lg text-sm md:mb-1 drop-shadow-lg">
                                     {project.title || `Project ${project.id}`}
                                   </h3>
-                                  <p className="text-sm text-gray-200">
+                                  <p className="text-xs text-gray-200">
                                     {categories.find(
                                       (c) => c.id === project.category
                                     )?.name || project.category}
