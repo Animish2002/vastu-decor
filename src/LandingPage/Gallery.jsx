@@ -182,6 +182,76 @@ const Gallery = () => {
     return "aspect-[16/9]";
   };
 
+  // Function to handle image/video download
+  const handleDownload = async (project) => {
+    try {
+      // Determine the URL to download (use image or video depending on project type)
+      const url =
+        project.type === "video"
+          ? project.video || project.image
+          : project.image || project.thumbnail;
+
+      const filename = `vastudecor-project-${project.id}.${
+        project.type === "video" ? "mp4" : "jpg"
+      }`;
+
+      // Create a temporary anchor element
+      const link = document.createElement("a");
+      link.href = url;
+      link.download = filename;
+
+      // For cross-origin resources, we might need to fetch and create a blob
+      if (
+        new URL(url, window.location.origin).origin !== window.location.origin
+      ) {
+        const response = await fetch(url);
+        const blob = await response.blob();
+        link.href = URL.createObjectURL(blob);
+      }
+
+      // Trigger download
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+
+      // Clean up the object URL if we created one
+      if (link.href.startsWith("blob:")) {
+        URL.revokeObjectURL(link.href);
+      }
+    } catch (error) {
+      console.error("Download failed:", error);
+      // You could add toast notification here for error feedback
+    }
+  };
+
+  // Function to handle sharing content
+  const handleShare = async (project) => {
+    const shareData = {
+      title: project.title || `Vastu Decor Project ${project.id}`,
+      text:
+        project.description ||
+        `Check out this amazing interior design project from Vastu Decor.`,
+      url: window.location.href, // Current URL - could be enhanced to deep link to specific project
+    };
+
+    try {
+      // Use the Web Share API if available
+      if (navigator.share) {
+        await navigator.share(shareData);
+      } else {
+        // Fallback to clipboard if Web Share API is not available
+        await navigator.clipboard.writeText(
+          `${shareData.title}\n${shareData.text}\n${shareData.url}`
+        );
+        // You could add a toast notification here to confirm copy
+        alert("Link copied to clipboard!");
+      }
+    } catch (error) {
+      console.error("Error sharing:", error);
+      // You could add toast notification here for error feedback
+    }
+  };
+
   // Loading skeleton with staggered animation
   const GallerySkeleton = () => (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
@@ -746,7 +816,12 @@ const Gallery = () => {
                         <Button
                           variant="ghost"
                           size="icon"
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            handleShare(selectedProject);
+                          }}
                           className="text-gray-500 hover:text-gray-600"
+                          aria-label="Share project"
                         >
                           <Share2 className="h-5 w-5" />
                         </Button>
@@ -759,7 +834,12 @@ const Gallery = () => {
                         <Button
                           variant="ghost"
                           size="icon"
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            handleDownload(selectedProject);
+                          }}
                           className="text-gray-500 hover:text-gray-600"
+                          aria-label="Download project"
                         >
                           <Download className="h-5 w-5" />
                         </Button>
