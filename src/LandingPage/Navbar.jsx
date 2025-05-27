@@ -181,10 +181,10 @@ const Navbar = () => {
 
               <div className="flex items-center space-x-2">
                 <motion.a
-                  href="#consultation"
+                  href="#contact"
                   onClick={(e) => {
                     e.preventDefault();
-                    handleNavigation("#consultation");
+                    handleNavigation("#contact");
                   }}
                   className="inline-flex items-center justify-center rounded-full px-6 py-2 bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-indigo-600 hover:to-purple-700 text-white shadow-md hover:shadow-lg transition-all duration-300 font-medium"
                   whileHover={{ scale: 1.05, y: -2 }}
@@ -292,10 +292,10 @@ const Navbar = () => {
                 transition={{ delay: 0.4 }}
               >
                 <motion.a
-                  href="#consultation"
+                  href="#contact"
                   onClick={(e) => {
                     e.preventDefault();
-                    handleNavigation("#consultation");
+                    handleNavigation("#contact");
                   }}
                   whileHover={{ scale: 1.03 }}
                   whileTap={{ scale: 0.97 }}

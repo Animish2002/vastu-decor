@@ -26,12 +26,12 @@ import Autoplay from "embla-carousel-autoplay";
 const AboutUs = () => {
   const stats = [
     {
-      value: "8+",
+      value: "10+",
       label: "Years Experience",
       icon: <Clock className="h-5 w-5" />,
     },
     {
-      value: "120",
+      value: "150",
       label: "Projects Completed",
       icon: <Briefcase className="h-5 w-5" />,
     },
@@ -46,15 +46,15 @@ const AboutUs = () => {
   ];
 
   const image1 =
-    "https://res.cloudinary.com/dkv3bx51z/image/upload/v1744996092/PHOTO-2024-10-19-13-59-02_1_hgtxse.jpg";
+    "https://res.cloudinary.com/dkv3bx51z/image/upload/v1744996057/IMG_0683_mmcm63.jpg";
   const image2 =
-    "https://res.cloudinary.com/dkv3bx51z/image/upload/v1744996060/eb6c2f404ac964f6d4b006d6694ee866_rfwg34.jpg";
+    "https://res.cloudinary.com/dkv3bx51z/image/upload/v1744996117/IMG_0252_ipubdl.jpg";
   const image3 =
     "https://res.cloudinary.com/dkv3bx51z/image/upload/v1744998109/IMG_4229_fi8mss_el1quh.jpg";
   const image4 =
     "https://res.cloudinary.com/dkv3bx51z/image/upload/v1744996059/caf2f491ed8dbf054553e8148e995ddc_r0su0j.jpg";
   const image5 =
-    "https://res.cloudinary.com/dkv3bx51z/image/upload/v1744996058/bad1ffe8332b31eaee696bba029b34f6_vg3v89.jpg";
+    "https://res.cloudinary.com/dkv3bx51z/image/upload/v1744996142/IMG_1858_jzz90e.jpg";
 
   const carouselImages = [
     { src: image1, alt: "Studio Portrait" },

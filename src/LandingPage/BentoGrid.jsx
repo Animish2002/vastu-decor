@@ -10,6 +10,7 @@ import {
   IconSignature,
   IconTableColumn,
 } from "@tabler/icons-react";
+import { Link } from "react-router-dom";
 
 export function BentoGridDemo() {
   return (
@@ -23,18 +24,20 @@ export function BentoGridDemo() {
           you
         </p>
       </div>
-      <BentoGrid className="max-w-7xl mx-auto px-4">
-        {items.map((item, i) => (
-          <BentoGridItem
-            key={i}
-            title={item.title}
-            description={item.description}
-            header={item.header}
-            icon={item.icon}
-            className={i === 3 || i === 6 ? "md:col-span-2" : ""}
-          />
-        ))}
-      </BentoGrid>
+      <Link to={"/gallery"}>
+        <BentoGrid className="max-w-7xl mx-auto px-4">
+          {items.map((item, i) => (
+            <BentoGridItem
+              key={i}
+              title={item.title}
+              description={item.description}
+              header={item.header}
+              icon={item.icon}
+              className={i === 3 || i === 6 ? "md:col-span-2" : ""}
+            />
+          ))}
+        </BentoGrid>
+      </Link>
     </>
   );
 }

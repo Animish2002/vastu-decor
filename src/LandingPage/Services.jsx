@@ -1,77 +1,68 @@
 import React from "react";
 import { Card, CardContent } from "../components/ui/card";
 
-
 const Services = () => {
   const services = [
     {
       title: "Interior Painting",
       description:
         "Transform your living spaces with premium finishes and expert color consultation.",
-      gifSrc: "https://res.cloudinary.com/dkv3bx51z/image/upload/v1744996425/InteriorPainting_rlxbma.gif",
+      gifSrc:
+        "https://res.cloudinary.com/dkv3bx51z/image/upload/v1744996425/InteriorPainting_rlxbma.gif",
       altText: "Interior painting service",
     },
     {
       title: "Exterior Painting",
       description:
         "Weather-resistant, long-lasting solutions that enhance curb appeal and protect your property.",
-      gifSrc: "https://res.cloudinary.com/dkv3bx51z/image/upload/v1744996419/ExteriorPainting-1_khby7z.gif",
+      gifSrc:
+        "https://res.cloudinary.com/dkv3bx51z/image/upload/v1744996419/ExteriorPainting-1_khby7z.gif",
       altText: "Exterior painting service",
     },
     {
       title: "Waterproofing",
       description:
         "Protect your property from moisture damage and prevent costly repairs.",
-      gifSrc: "https://res.cloudinary.com/dkv3bx51z/image/upload/v1744996431/WaterProofing-1_ewm0ei.gif",
+      gifSrc:
+        "https://res.cloudinary.com/dkv3bx51z/image/upload/v1744996431/WaterProofing-1_ewm0ei.gif",
       altText: "Waterproofing service",
-    },
-    {
-      title: "Custom Furniture",
-      description:
-        "Handcrafted pieces designed to your specifications, combining aesthetics and functionality.",
-      gifSrc: "/api/placeholder/400/320",
-      altText: "Custom furniture",
     },
     {
       title: "Interior Design",
       description:
         "Full-service design that transforms spaces into harmonious environments reflecting your style.",
-      gifSrc: "/api/placeholder/400/320",
+      gifSrc: "https://res.cloudinary.com/dkv3bx51z/image/upload/v1748336168/InteriorDesign_vaxumi.gif",
       altText: "Interior design service",
     },
     {
       title: "Kitchen Remodeling",
       description:
         "Complete renovation from layout planning to installation, creating beautiful cooking spaces.",
-      gifSrc: "/api/placeholder/400/320",
+      gifSrc:
+        "https://res.cloudinary.com/dkv3bx51z/image/upload/v1748335718/Kitchen_Remoudling_mxfy1r.gif",
       altText: "Kitchen remodeling",
     },
     {
       title: "Tile Installation",
       description:
         "Expert installation for floors, walls, and backsplashes using premium materials.",
-      gifSrc: "/api/placeholder/400/320",
+      gifSrc: "https://res.cloudinary.com/dkv3bx51z/image/upload/v1748336439/TileWork_b3u1sn.gif",
       altText: "Tile installation",
     },
     {
       title: "Plumbing Services",
       description:
         "Professional installation and repairs for efficient water systems throughout your property.",
-      gifSrc: "/api/placeholder/400/320",
+      gifSrc: "https://res.cloudinary.com/dkv3bx51z/image/upload/v1748336521/plumbing_tsaqii.gif",
       altText: "Plumbing service",
     },
-    {
-      title: "Electrical Work",
-      description:
-        "Safe and reliable installations and repairs by certified professionals.",
-      gifSrc: "/api/placeholder/400/320",
-      altText: "Electrical work",
-    },
+    
     {
       title: "Deep Cleaning",
       description:
         "Thorough cleaning services that restore shine and hygiene to all areas of your space.",
-      gifSrc: "https://res.cloudinary.com/dkv3bx51z/image/upload/v1744996419/deep-cleaning_ogi4fb.gif",
+      gifSrc:
+        "https://res.cloudinary.com/dkv3bx51z/image/upload/v1744996419/deep-cleaning_ogi4fb.gif",
       altText: "Deep cleaning service",
     },
   ];
@@ -93,7 +84,7 @@ const Services = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-5">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
           {services.map((service, index) => (
             <Card
               key={index}

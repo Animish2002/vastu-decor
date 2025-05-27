@@ -68,8 +68,8 @@ const HeroSection = () => {
                 },
               }}
             >
-              Award-winning architectural and interior design studio crafting
-              unique, sustainable spaces that inspire and endure.
+              Experienced architectural and interior design studio offering
+              client satisfaction and easy solutions for inspiring, sustainable spaces.
             </motion.p>
 
             <motion.div
@@ -133,8 +133,8 @@ const HeroSection = () => {
               }}
             >
               {[
-                { number: "15+", label: "Years Experience" },
-                { number: "200+", label: "Projects Completed" },
+                { number: "10+", label: "Years Experience" },
+                { number: "150+", label: "Projects Completed" },
                 { number: "100%", label: "Client Satisfaction" },
               ].map((item, index) => (
                 <motion.div

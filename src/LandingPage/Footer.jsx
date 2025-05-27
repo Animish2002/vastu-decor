@@ -123,18 +123,7 @@ const Footer = () => {
           <p className="text-slate-500 mb-4 md:mb-0 text-sm">
             © 2025 Vastu Decor & Home Solutions. All rights reserved.
           </p>
-          <div className="flex space-x-6">
-            {["Privacy Policy", "Terms of Service", "Sitemap"].map((item) => (
-              <a
-                key={item}
-                href="#"
-                className="text-slate-500 hover:text-white transition-colors text-sm flex items-center"
-              >
-                <span>{item}</span>
-                <ExternalLink size={12} className="ml-1" />
-              </a>
-            ))}
-          </div>
+          
         </div>
       </div>
     </footer>

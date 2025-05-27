@@ -33,6 +33,8 @@ import { useSwipeable } from "react-swipeable"; // Make sure to install this pac
 // Import your data
 import galleryData from "../GalleryLinks/data.json";
 import ContactSection from "./ContactSection";
+import Footer from "./Footer";
+import { Link } from "react-router-dom";
 
 const Gallery = () => {
   // State management
@@ -56,6 +58,19 @@ const Gallery = () => {
 
   // Controls for animations
   const controls = useAnimation();
+
+  const handleNavigation = (href) => {
+    // If it's an internal anchor link
+    if (href.startsWith("#")) {
+      const targetId = href.substring(1);
+      setActiveItem(href);
+      setScrollTarget(targetId);
+      if (mobileMenuOpen) setMobileMenuOpen(false);
+      return false; // Prevent default
+    }
+    // For regular links like "/gallery"
+    return true;
+  };
 
   // Initialize data
   useEffect(() => {
@@ -433,7 +448,9 @@ const Gallery = () => {
               Contact
               <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-indigo-600 group-hover:w-full transition-all duration-300"></span>
             </a>
+
             <motion.button
+              onClick={() => handleNavigation("#contact")}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className="bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white px-6 py-2 rounded-md transition-all duration-300 shadow-md hover:shadow-lg"
@@ -496,7 +513,7 @@ const Gallery = () => {
       </AnimatePresence>
 
       {/* Main content */}
-      <div className="container mx-auto py-8 px-4 flex-grow">
+      <div className="container md:w-10/12 mx-auto py-8 px-4 flex-grow">
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -604,7 +621,7 @@ const Gallery = () => {
                   <>
                     {/* Masonry Grid Layout */}
                     <motion.div
-                      className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 auto-rows-auto gap-3 md:gap-6"
+                      className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 auto-rows-auto gap-3 md:gap-6"
                       variants={containerVariants}
                       initial="hidden"
                       animate="show"
@@ -774,7 +791,7 @@ const Gallery = () => {
             open={!!selectedProject}
             onOpenChange={(open) => !open && setSelectedProject(null)}
           >
-            <DialogContent className="max-w-5xl w-full p-0 overflow-hidden max-h-[90vh] bg-white dark:bg-gray-900 rounded-xl">
+            <DialogContent className=" w-full p-0 overflow-hidden max-h-[90vh] bg-white dark:bg-gray-900 rounded-xl">
               {selectedProject && (
                 <motion.div
                   initial={{ opacity: 0 }}
@@ -861,79 +878,117 @@ const Gallery = () => {
                     </motion.div>
                   )}
 
-                  <div className="p-4 border-t border-gray-100 dark:border-gray-800 flex justify-between items-center bg-white dark:bg-gray-900">
-                    <div className="flex space-x-2">
-                      <motion.div
-                        whileHover={{ scale: 1.1 }}
-                        whileTap={{ scale: 0.9 }}
-                      >
-                        <Button
-                          variant="outline"
-                          size="sm"
-                          onClick={() => navigateProject("prev")}
-                          className="border-indigo-200 dark:border-indigo-800 hover:bg-indigo-50 dark:hover:bg-indigo-900/20"
+                  <div className="p-3 md:p-4 border-t border-gray-100 dark:border-gray-800 bg-white dark:bg-gray-900">
+                    {/* Desktop Layout */}
+                    <div className="hidden md:flex justify-between items-center">
+                      <div className="flex space-x-2">
+                        <motion.div
+                          whileHover={{ scale: 1.1 }}
+                          whileTap={{ scale: 0.9 }}
                         >
-                          <ChevronLeft className="h-4 w-4 mr-2" /> Previous
-                        </Button>
-                      </motion.div>
+                          <Button
+                            variant="outline"
+                            size="sm"
+                            onClick={() => navigateProject("prev")}
+                            className="border-indigo-200 dark:border-indigo-800 hover:bg-indigo-50 dark:hover:bg-indigo-900/20"
+                          >
+                            <ChevronLeft className="h-4 w-4 mr-2" /> Previous
+                          </Button>
+                        </motion.div>
+                      </div>
+
+                      <div className="flex space-x-3">
+                        <motion.div
+                          whileHover={{ scale: 1.1 }}
+                          whileTap={{ scale: 0.9 }}
+                        >
+                          <Button
+                            variant="ghost"
+                            size="icon"
+                            onClick={(e) => toggleLike(selectedProject.id, e)}
+                            className={`${
+                              likedProjects.has(selectedProject.id)
+                                ? "text-red-500 hover:text-red-600"
+                                : "text-gray-500 hover:text-gray-600"
+                            }`}
+                          >
+                            <Heart className="h-5 w-5" />
+                          </Button>
+                        </motion.div>
+
+                        <motion.div
+                          whileHover={{ scale: 1.1 }}
+                          whileTap={{ scale: 0.9 }}
+                        >
+                          <Button
+                            variant="ghost"
+                            size="icon"
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              handleShare(selectedProject);
+                            }}
+                            className="text-gray-500 hover:text-gray-600"
+                            aria-label="Share project"
+                          >
+                            <Share2 className="h-5 w-5" />
+                          </Button>
+                        </motion.div>
+
+                        <motion.div
+                          whileHover={{ scale: 1.1 }}
+                          whileTap={{ scale: 0.9 }}
+                        >
+                          <Button
+                            variant="ghost"
+                            size="icon"
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              handleDownload(selectedProject);
+                            }}
+                            className="text-gray-500 hover:text-gray-600"
+                            aria-label="Download project"
+                          >
+                            <Download className="h-5 w-5" />
+                          </Button>
+                        </motion.div>
+                      </div>
+
+                      <div className="flex space-x-1">
+                        <DialogClose asChild>
+                          <motion.div
+                            whileHover={{ scale: 1.05 }}
+                            whileTap={{ scale: 0.95 }}
+                          >
+                            <Button
+                              variant="outline"
+                              size="sm"
+                              className="border-gray-200 dark:border-gray-700"
+                            >
+                              Close
+                            </Button>
+                          </motion.div>
+                        </DialogClose>
+
+                        <motion.div
+                          whileHover={{ scale: 1.1 }}
+                          whileTap={{ scale: 0.9 }}
+                        >
+                          <Button
+                            variant="outline"
+                            size="sm"
+                            onClick={() => navigateProject("next")}
+                            className="border-indigo-200 dark:border-indigo-800 hover:bg-indigo-50 dark:hover:bg-indigo-900/20"
+                          >
+                            Next <ChevronRight className="h-4 w-4 ml-2" />
+                          </Button>
+                        </motion.div>
+                      </div>
                     </div>
 
-                    <div className="flex space-x-3">
-                      <motion.div
-                        whileHover={{ scale: 1.1 }}
-                        whileTap={{ scale: 0.9 }}
-                      >
-                        <Button
-                          variant="ghost"
-                          size="icon"
-                          onClick={(e) => toggleLike(selectedProject.id, e)}
-                          className={`${
-                            likedProjects.has(selectedProject.id)
-                              ? "text-red-500 hover:text-red-600"
-                              : "text-gray-500 hover:text-gray-600"
-                          }`}
-                        ></Button>
-                      </motion.div>
-
-                      <motion.div
-                        whileHover={{ scale: 1.1 }}
-                        whileTap={{ scale: 0.9 }}
-                      >
-                        <Button
-                          variant="ghost"
-                          size="icon"
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            handleShare(selectedProject);
-                          }}
-                          className="text-gray-500 hover:text-gray-600"
-                          aria-label="Share project"
-                        >
-                          <Share2 className="h-5 w-5" />
-                        </Button>
-                      </motion.div>
-
-                      <motion.div
-                        whileHover={{ scale: 1.1 }}
-                        whileTap={{ scale: 0.9 }}
-                      >
-                        <Button
-                          variant="ghost"
-                          size="icon"
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            handleDownload(selectedProject);
-                          }}
-                          className="text-gray-500 hover:text-gray-600"
-                          aria-label="Download project"
-                        >
-                          <Download className="h-5 w-5" />
-                        </Button>
-                      </motion.div>
-                    </div>
-
-                    <div className="flex space-x-2">
-                      <DialogClose asChild>
+                    {/* Mobile Layout */}
+                    <div className="md:hidden space-y-3">
+                      {/* Top Row: Navigation */}
+                      <div className="flex justify-between items-center">
                         <motion.div
                           whileHover={{ scale: 1.05 }}
                           whileTap={{ scale: 0.95 }}
@@ -941,26 +996,105 @@ const Gallery = () => {
                           <Button
                             variant="outline"
                             size="sm"
-                            className="border-gray-200 dark:border-gray-700"
+                            onClick={() => navigateProject("prev")}
+                            className="border-indigo-200 dark:border-indigo-800 hover:bg-indigo-50 dark:hover:bg-indigo-900/20 px-3"
                           >
-                            Close
+                            <ChevronLeft className="h-4 w-4 mr-1" />
+                            <span className="hidden xs:inline">Prev</span>
                           </Button>
                         </motion.div>
-                      </DialogClose>
 
-                      <motion.div
-                        whileHover={{ scale: 1.1 }}
-                        whileTap={{ scale: 0.9 }}
-                      >
-                        <Button
-                          variant="outline"
-                          size="sm"
-                          onClick={() => navigateProject("next")}
-                          className="border-indigo-200 dark:border-indigo-800 hover:bg-indigo-50 dark:hover:bg-indigo-900/20"
+                        <motion.div
+                          whileHover={{ scale: 1.05 }}
+                          whileTap={{ scale: 0.95 }}
                         >
-                          Next <ChevronRight className="h-4 w-4 ml-2" />
-                        </Button>
-                      </motion.div>
+                          <Button
+                            variant="outline"
+                            size="sm"
+                            onClick={() => navigateProject("next")}
+                            className="border-indigo-200 dark:border-indigo-800 hover:bg-indigo-50 dark:hover:bg-indigo-900/20 px-3"
+                          >
+                            <span className="hidden xs:inline">Next</span>
+                            <ChevronRight className="h-4 w-4 ml-1" />
+                          </Button>
+                        </motion.div>
+                      </div>
+
+                      {/* Bottom Row: Actions */}
+                      <div className="flex justify-between items-center">
+                        {/* Action Icons */}
+                        <div className="flex space-x-2">
+                          <motion.div
+                            whileHover={{ scale: 1.1 }}
+                            whileTap={{ scale: 0.9 }}
+                          >
+                            <Button
+                              variant="ghost"
+                              size="icon"
+                              onClick={(e) => toggleLike(selectedProject.id, e)}
+                              className={`${
+                                likedProjects.has(selectedProject.id)
+                                  ? "text-red-500 hover:text-red-600"
+                                  : "text-gray-500 hover:text-gray-600"
+                              } h-9 w-9`}
+                            >
+                              <Heart className="h-4 w-4" />
+                            </Button>
+                          </motion.div>
+
+                          <motion.div
+                            whileHover={{ scale: 1.1 }}
+                            whileTap={{ scale: 0.9 }}
+                          >
+                            <Button
+                              variant="ghost"
+                              size="icon"
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                handleShare(selectedProject);
+                              }}
+                              className="text-gray-500 hover:text-gray-600 h-9 w-9"
+                              aria-label="Share project"
+                            >
+                              <Share2 className="h-4 w-4" />
+                            </Button>
+                          </motion.div>
+
+                          <motion.div
+                            whileHover={{ scale: 1.1 }}
+                            whileTap={{ scale: 0.9 }}
+                          >
+                            <Button
+                              variant="ghost"
+                              size="icon"
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                handleDownload(selectedProject);
+                              }}
+                              className="text-gray-500 hover:text-gray-600 h-9 w-9"
+                              aria-label="Download project"
+                            >
+                              <Download className="h-4 w-4" />
+                            </Button>
+                          </motion.div>
+                        </div>
+
+                        {/* Close Button */}
+                        <DialogClose asChild>
+                          <motion.div
+                            whileHover={{ scale: 1.05 }}
+                            whileTap={{ scale: 0.95 }}
+                          >
+                            <Button
+                              variant="outline"
+                              size="sm"
+                              className="border-gray-200 dark:border-gray-700 px-4"
+                            >
+                              Close
+                            </Button>
+                          </motion.div>
+                        </DialogClose>
+                      </div>
                     </div>
                   </div>
                 </motion.div>
@@ -989,19 +1123,8 @@ const Gallery = () => {
 
       <ContactSection />
 
+      <Footer />
       {/* Footer with animated gradient border */}
-      <footer className="bg-white dark:bg-gray-900 py-8 mt-16 border-t border-gray-100 dark:border-gray-800 relative">
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-          className="border-t border-gray-100 dark:border-gray-800 mt-8 pt-6 text-center"
-        >
-          <p className="text-gray-600 dark:text-gray-400 text-sm">
-            &copy; {new Date().getFullYear()} Vastu Decor. All rights reserved.
-          </p>
-        </motion.div>
-      </footer>
     </motion.div>
   );
 };
