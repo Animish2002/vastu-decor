@@ -101,7 +101,7 @@ const ContactSection = () => {
     setSubmitState({ isSubmitting: true, isSubmitted: false, error: null });
 
     try {
-      const response = await fetch(import.meta.env.FORMSPREE_URL, {
+      const response = await fetch("https://formspree.io/f/xpwraqbp", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
