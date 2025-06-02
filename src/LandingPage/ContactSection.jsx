@@ -73,7 +73,7 @@ const ContactSection = () => {
     },
     {
       icon: <Phone className="text-indigo-600" size={20} />,
-      text: "+1 (555) 123-4567",
+      text: "+91-9545437436",
     },
     {
       icon: <MapPin className="text-indigo-600" size={20} />,
