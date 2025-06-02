@@ -111,7 +111,7 @@ const Footer = () => {
                   size={16}
                   className="text-indigo-400 mr-2 flex-shrink-0"
                 />
-                <span className="text-sm">+1 (555) 123-4567</span>
+                <span className="text-sm">+91-9545437436</span>
               </li>
             </ul>
           </div>
