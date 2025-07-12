@@ -22,14 +22,13 @@ const Footer = () => {
           {/* Brand Column */}
           <div className="lg:col-span-4">
             <h4 className="md:text-3xl text-xl mb-4 text-white flex items-center heading">
-             
               Vastu Decor & Home Solutions
             </h4>
             <p className="text-slate-400 mb-6 leading-relaxed">
               Creating exceptional spaces that inspire, function, and endure
               through thoughtful design and innovative solutions.
             </p>
-            <div className="flex space-x-4 mb-8">
+            {/* <div className="flex space-x-4 mb-8">
               <Button
                 size="icon"
                 variant="ghost"
@@ -54,7 +53,7 @@ const Footer = () => {
                 <Linkedin size={18} />
                 <span className="sr-only">LinkedIn</span>
               </Button>
-            </div>
+            </div> */}
           </div>
 
           {/* Quick Links Column */}
@@ -64,21 +63,44 @@ const Footer = () => {
             </h4>
             <Separator className="mb-4 bg-slate-800 w-12 h-0.5" />
             <ul className="space-y-3">
-              {["About", "Projects", "Services", "Contact"].map((item) => (
-                <li key={item}>
-                  <a
-                    href={`#${item.toLowerCase()}`}
-                    onClick={() => item === "Projects" && navigate("/gallery")}
-                    className="text-slate-400 hover:text-white transition-colors flex items-center group"
-                  >
-                    <span className="bg-slate-800 w-1 h-1 rounded-full mr-2 group-hover:bg-indigo-500 transition-colors"></span>
-                    {item}
-                  </a>
-                </li>
-              ))}
+              <li>
+                <a
+                  href="/#about"
+                  className="text-slate-400 hover:text-white transition-colors flex items-center group"
+                >
+                  <span className="bg-slate-800 w-1 h-1 rounded-full mr-2 group-hover:bg-indigo-500 transition-colors"></span>
+                  About
+                </a>
+              </li>
+              <li>
+                <a
+                  href="/gallery"
+                  className="text-slate-400 hover:text-white transition-colors flex items-center group"
+                >
+                  <span className="bg-slate-800 w-1 h-1 rounded-full mr-2 group-hover:bg-indigo-500 transition-colors"></span>
+                  Projects
+                </a>
+              </li>
+              <li>
+                <a
+                  href="/#services"
+                  className="text-slate-400 hover:text-white transition-colors flex items-center group"
+                >
+                  <span className="bg-slate-800 w-1 h-1 rounded-full mr-2 group-hover:bg-indigo-500 transition-colors"></span>
+                  Services
+                </a>
+              </li>
+              <li>
+                <a
+                  href="/#contact"
+                  className="text-slate-400 hover:text-white transition-colors flex items-center group"
+                >
+                  <span className="bg-slate-800 w-1 h-1 rounded-full mr-2 group-hover:bg-indigo-500 transition-colors"></span>
+                  Contact
+                </a>
+              </li>
             </ul>
           </div>
-
 
           {/* Contact Column */}
           <div className="lg:col-span-3">
@@ -123,7 +145,17 @@ const Footer = () => {
           <p className="text-slate-500 mb-4 md:mb-0 text-sm">
             © 2025 Vastu Decor & Home Solutions. All rights reserved.
           </p>
-          
+          <span className="text-slate-500 text-sm">
+            Designed with <span className="text-red-500">♥</span> by
+            <a
+              href="https://www.thefortune.club/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-yellow-500 hover:underline ml-1"
+            >
+              The Fortune Club
+            </a>
+          </span>
         </div>
       </div>
     </footer>

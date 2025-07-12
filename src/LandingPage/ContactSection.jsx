@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { motion } from "framer-motion";
 import {
   Mail,
   Phone,
@@ -10,20 +9,8 @@ import {
   Linkedin,
   CheckCircle,
   AlertCircle,
+  ChevronDown,
 } from "lucide-react";
-import { Card, CardHeader, CardContent } from "../components/ui/card";
-import { Input } from "../components/ui/input";
-import { Textarea } from "../components/ui/textarea";
-import {
-  Select,
-  SelectTrigger,
-  SelectValue,
-  SelectContent,
-  SelectItem,
-} from "../components/ui/select";
-import { Button } from "../components/ui/button";
-import { Label } from "../components/ui/label";
-import { Separator } from "../components/ui/separator";
 
 const ContactSection = () => {
   const [formState, setFormState] = useState({
@@ -41,30 +28,7 @@ const ContactSection = () => {
     error: null,
   });
 
-  // Replace 'YOUR_FORM_ID' with your actual Formspree form ID
-
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.2,
-        delayChildren: 0.3,
-      },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { y: 20, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1,
-      transition: {
-        type: "spring",
-        stiffness: 100,
-      },
-    },
-  };
+  const [selectOpen, setSelectOpen] = useState(false);
 
   const contactInfo = [
     {
@@ -87,6 +51,16 @@ const ContactSection = () => {
     { icon: <Linkedin size={18} />, href: "#linkedin" },
   ];
 
+  const projectTypes = [
+    { value: "residential", label: "Residential Design" },
+    { value: "commercial", label: "Commercial Space" },
+    { value: "office", label: "Office Interior" },
+    { value: "renovation", label: "Renovation" },
+    { value: "cultural", label: "Cultural/Public Space" },
+    { value: "consultation", label: "Design Consultation" },
+    { value: "other", label: "Other" },
+  ];
+
   const handleInputChange = (e) => {
     const { id, value } = e.target;
     setFormState((prev) => ({ ...prev, [id]: value }));
@@ -94,10 +68,10 @@ const ContactSection = () => {
 
   const handleSelectChange = (value) => {
     setFormState((prev) => ({ ...prev, projectType: value }));
+    setSelectOpen(false);
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  const handleSubmit = async () => {
     setSubmitState({ isSubmitting: true, isSubmitted: false, error: null });
 
     try {
@@ -150,92 +124,70 @@ const ContactSection = () => {
   return (
     <section
       id="contact"
-      className="py-32 bg-gradient-to-b from-white to-gray-50"
+      className="py-16 sm:py-20 lg:py-32 bg-gradient-to-b from-white to-gray-50"
     >
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.2 }}
-          variants={containerVariants}
-          className="grid grid-cols-1 lg:grid-cols-2 gap-16"
-        >
-          <motion.div variants={itemVariants}>
-            <motion.span className="inline-block px-3 py-1 bg-indigo-100 text-indigo-800 rounded-full text-sm font-medium mb-4">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16">
+          {/* Left Column - Contact Info */}
+          <div className="order-2 lg:order-1">
+            <span className="inline-block px-3 py-1 bg-indigo-100 text-indigo-800 rounded-full text-sm font-medium mb-4">
               Contact Us
-            </motion.span>
+            </span>
 
-            <motion.h2
-              className="text-4xl font-bold mb-4 text-gray-900 heading"
-              variants={itemVariants}
-            >
+            <h2 className="text-3xl sm:text-4xl font-bold mb-4 text-gray-900">
               Let's <span className="text-indigo-600">Connect</span>
-            </motion.h2>
+            </h2>
 
-            <Separator className="mb-8 bg-indigo-200 w-24 h-1" />
+            <div className="w-24 h-1 bg-indigo-200 mb-6 lg:mb-8"></div>
 
-            <motion.p
-              className="text-gray-700 mb-10 text-lg leading-relaxed"
-              variants={itemVariants}
-            >
+            <p className="text-gray-700 mb-8 lg:mb-10 text-base sm:text-lg leading-relaxed">
               Ready to transform your space? Contact us to discuss your project
               or schedule a consultation with our award-winning team.
-            </motion.p>
+            </p>
 
-            <motion.div className="space-y-6 mb-10" variants={itemVariants}>
+            <div className="space-y-4 sm:space-y-6 mb-8 lg:mb-10">
               {contactInfo.map((item, index) => (
-                <motion.div
+                <div
                   key={index}
-                  className="flex items-center group"
-                  whileHover={{ x: 5 }}
-                  transition={{ type: "spring", stiffness: 400, damping: 17 }}
+                  className="flex items-start sm:items-center group transition-transform duration-200 hover:translate-x-1"
                 >
-                  <div className="h-10 w-10 bg-indigo-50 rounded-full flex items-center justify-center mr-4 group-hover:bg-indigo-100 transition-colors">
+                  <div className="h-10 w-10 bg-indigo-50 rounded-full flex items-center justify-center mr-4 flex-shrink-0 group-hover:bg-indigo-100 transition-colors">
                     {item.icon}
                   </div>
-                  <span className="text-gray-700 group-hover:text-indigo-600 transition-colors">
+                  <span className="text-gray-700 group-hover:text-indigo-600 transition-colors text-sm sm:text-base leading-relaxed">
                     {item.text}
                   </span>
-                </motion.div>
+                </div>
               ))}
-            </motion.div>
+            </div>
 
-            <motion.div className="flex space-x-4" variants={itemVariants}>
+            <div className="flex space-x-4">
               {socialLinks.map((link, index) => (
-                <motion.a
+                <a
                   key={index}
                   href={link.href}
-                  className="h-12 w-12 bg-gray-100 rounded-full flex items-center justify-center text-indigo-600 hover:bg-indigo-600 hover:text-white transition-all duration-300 shadow-sm hover:shadow-md"
-                  whileHover={{ y: -5, scale: 1.1 }}
-                  transition={{ type: "spring", stiffness: 400, damping: 10 }}
+                  className="h-12 w-12 bg-gray-100 rounded-full flex items-center justify-center text-indigo-600 hover:bg-indigo-600 hover:text-white transition-all duration-300 shadow-sm hover:shadow-md transform hover:-translate-y-1 hover:scale-110"
                 >
                   {link.icon}
-                </motion.a>
+                </a>
               ))}
-            </motion.div>
-          </motion.div>
+            </div>
+          </div>
 
-          <motion.div variants={itemVariants} className="relative">
-            <motion.div
-              className="absolute -z-10 w-full h-full bg-indigo-100 rounded-lg"
-              style={{ top: "15px", left: "15px" }}
-            />
+          {/* Right Column - Contact Form */}
+          <div className="order-1 lg:order-2 relative">
+            <div className="absolute -z-10 w-full h-full bg-indigo-100 rounded-lg transform translate-x-3 translate-y-3 sm:translate-x-4 sm:translate-y-4"></div>
 
-            <Card className="shadow-xl border-none overflow-hidden relative z-10">
-              <CardHeader className="pb-3">
+            <div className="bg-white shadow-xl border-0 rounded-lg overflow-hidden relative z-10">
+              <div className="px-6 py-6 border-b border-gray-200">
                 <h3 className="text-xl font-bold text-gray-900">
                   Send Us a Message
                 </h3>
-                <Separator className="mt-2 bg-gray-200" />
-              </CardHeader>
+              </div>
 
-              <CardContent className="pb-8">
+              <div className="px-6 py-6">
                 {submitState.isSubmitted ? (
-                  <motion.div
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    className="text-center py-8"
-                  >
+                  <div className="text-center py-8">
                     <CheckCircle
                       className="mx-auto text-green-600 mb-4"
                       size={48}
@@ -247,50 +199,52 @@ const ContactSection = () => {
                       Thank you for contacting us. We'll get back to you within
                       24 hours.
                     </p>
-                    <Button
+                    <button
                       onClick={resetForm}
-                      variant="outline"
-                      className="border-indigo-600 text-indigo-600 hover:bg-indigo-50"
+                      className="px-4 py-2 border border-indigo-600 text-indigo-600 rounded-lg hover:bg-indigo-50 transition-colors"
                     >
                       Send Another Message
-                    </Button>
-                  </motion.div>
+                    </button>
+                  </div>
                 ) : (
-                  <form onSubmit={handleSubmit} className="space-y-6">
+                  <div className="space-y-6">
                     {submitState.error && (
-                      <motion.div
-                        initial={{ opacity: 0, y: -10 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        className="flex items-center p-3 bg-red-50 border border-red-200 rounded-lg"
-                      >
+                      <div className="flex items-center p-3 bg-red-50 border border-red-200 rounded-lg">
                         <AlertCircle className="text-red-600 mr-2" size={16} />
                         <span className="text-red-800 text-sm">
                           {submitState.error}
                         </span>
-                      </motion.div>
+                      </div>
                     )}
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
                       <div className="space-y-2">
-                        <Label htmlFor="name" className="text-gray-700">
+                        <label
+                          htmlFor="name"
+                          className="text-gray-700 text-sm font-medium"
+                        >
                           Full Name
-                        </Label>
-                        <Input
+                        </label>
+                        <input
                           id="name"
                           name="name"
+                          type="text"
                           value={formState.name}
                           onChange={handleInputChange}
                           placeholder="John Doe"
                           required
-                          className="focus:ring-2 focus:ring-indigo-500/50 focus:border-indigo-500 transition-all rounded-lg"
+                          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all"
                         />
                       </div>
 
                       <div className="space-y-2">
-                        <Label htmlFor="email" className="text-gray-700">
+                        <label
+                          htmlFor="email"
+                          className="text-gray-700 text-sm font-medium"
+                        >
                           Email Address
-                        </Label>
-                        <Input
+                        </label>
+                        <input
                           id="email"
                           name="email"
                           type="email"
@@ -298,87 +252,108 @@ const ContactSection = () => {
                           onChange={handleInputChange}
                           placeholder="john@example.com"
                           required
-                          className="focus:ring-2 focus:ring-indigo-500/50 focus:border-indigo-500 transition-all rounded-lg"
+                          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all"
                         />
                       </div>
                     </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
                       <div className="space-y-2">
-                        <Label htmlFor="mobile" className="text-gray-700">
+                        <label
+                          htmlFor="mobile"
+                          className="text-gray-700 text-sm font-medium"
+                        >
                           Mobile Number
-                        </Label>
-                        <Input
+                        </label>
+                        <input
                           id="mobile"
                           name="mobile"
                           type="text"
                           value={formState.mobile}
                           onChange={handleInputChange}
                           placeholder="+91 98765 43210"
-                          className="focus:ring-2 focus:ring-indigo-500/50 focus:border-indigo-500 transition-all rounded-lg"
+                          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all"
                         />
                       </div>
 
                       <div className="space-y-2">
-                        <Label htmlFor="project-type" className="text-gray-700">
-                          Project Type
-                        </Label>
-                        <Select
-                          onValueChange={handleSelectChange}
-                          value={formState.projectType}
-                          name="projectType"
+                        <label
+                          htmlFor="project-type"
+                          className="text-gray-700 text-sm font-medium"
                         >
-                          <SelectTrigger
-                            id="project-type"
-                            className="focus:ring-2 focus:ring-indigo-500/50 focus:border-indigo-500 transition-all rounded-lg"
+                          Project Type
+                        </label>
+                        <div className="relative">
+                          <button
+                            type="button"
+                            onClick={() => setSelectOpen(!selectOpen)}
+                            className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all text-left bg-white flex items-center justify-between"
                           >
-                            <SelectValue placeholder="Select a project type" />
-                          </SelectTrigger>
-                          <SelectContent>
-                            <SelectItem value="residential">
-                              Residential Design
-                            </SelectItem>
-                            <SelectItem value="commercial">
-                              Commercial Space
-                            </SelectItem>
-                            <SelectItem value="office">
-                              Office Interior
-                            </SelectItem>
-                            <SelectItem value="renovation">
-                              Renovation
-                            </SelectItem>
-                            <SelectItem value="cultural">
-                              Cultural/Public Space
-                            </SelectItem>
-                            <SelectItem value="consultation">
-                              Design Consultation
-                            </SelectItem>
-                            <SelectItem value="other">Other</SelectItem>
-                          </SelectContent>
-                        </Select>
+                            <span
+                              className={
+                                formState.projectType
+                                  ? "text-gray-900"
+                                  : "text-gray-500"
+                              }
+                            >
+                              {formState.projectType
+                                ? projectTypes.find(
+                                    (p) => p.value === formState.projectType
+                                  )?.label
+                                : "Select a project type"}
+                            </span>
+                            <ChevronDown
+                              size={16}
+                              className={`transform transition-transform ${
+                                selectOpen ? "rotate-180" : ""
+                              }`}
+                            />
+                          </button>
+                          {selectOpen && (
+                            <div className="absolute top-full left-0 right-0 mt-1 bg-white border border-gray-300 rounded-lg shadow-lg z-20 max-h-60 overflow-y-auto">
+                              {projectTypes.map((type) => (
+                                <button
+                                  key={type.value}
+                                  type="button"
+                                  onClick={() => handleSelectChange(type.value)}
+                                  className="w-full px-3 py-2 text-left hover:bg-gray-50 transition-colors first:rounded-t-lg last:rounded-b-lg"
+                                >
+                                  {type.label}
+                                </button>
+                              ))}
+                            </div>
+                          )}
+                        </div>
                       </div>
                     </div>
 
                     <div className="space-y-2">
-                      <Label htmlFor="subject" className="text-gray-700">
+                      <label
+                        htmlFor="subject"
+                        className="text-gray-700 text-sm font-medium"
+                      >
                         Subject
-                      </Label>
-                      <Input
+                      </label>
+                      <input
                         id="subject"
                         name="subject"
+                        type="text"
                         value={formState.subject}
                         onChange={handleInputChange}
                         placeholder="Brief subject of your inquiry"
                         required
-                        className="focus:ring-2 focus:ring-indigo-500/50 focus:border-indigo-500 transition-all rounded-lg"
+                        className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all"
                       />
                     </div>
 
                     <div className="space-y-2">
-                      <Label htmlFor="message" className="text-gray-700">
+                      <label
+                        htmlFor="message"
+                        className="text-gray-700 text-sm font-medium"
+                      >
                         Your Message
-                      </Label>
-                      <Textarea
+                      </label>
+                      <textarea
                         id="message"
                         name="message"
                         rows={5}
@@ -386,55 +361,36 @@ const ContactSection = () => {
                         onChange={handleInputChange}
                         placeholder="Tell us about your project, requirements, and questions..."
                         required
-                        className="resize-none focus:ring-2 focus:ring-indigo-500/50 focus:border-indigo-500 transition-all rounded-lg"
+                        className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all resize-none"
                       />
                     </div>
 
-                    <motion.div
-                      whileHover={{ scale: 1.01 }}
-                      whileTap={{ scale: 0.99 }}
+                    <button
+                      type="button"
+                      onClick={handleSubmit}
+                      disabled={submitState.isSubmitting}
+                      className="w-full bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 disabled:from-gray-400 disabled:to-gray-500 text-white font-medium py-3 rounded-lg transition-all duration-300 hover:shadow-lg disabled:cursor-not-allowed transform hover:scale-105 active:scale-95"
                     >
-                      <Button
-                        type="submit"
-                        disabled={submitState.isSubmitting}
-                        className="w-full bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 disabled:from-gray-400 disabled:to-gray-500 text-white font-medium py-3 rounded-lg transition-all duration-300 hover:shadow-lg disabled:cursor-not-allowed"
-                      >
-                        <motion.span
-                          initial={{ opacity: 1 }}
-                          whileHover={{
-                            opacity: [1, 0.8, 1],
-                            transition: { repeat: Infinity, duration: 2 },
-                          }}
-                          className="flex items-center justify-center"
-                        >
-                          {submitState.isSubmitting ? (
-                            <>
-                              <motion.div
-                                animate={{ rotate: 360 }}
-                                transition={{
-                                  duration: 1,
-                                  repeat: Infinity,
-                                  ease: "linear",
-                                }}
-                                className="w-4 h-4 border-2 border-white border-t-transparent rounded-full mr-2"
-                              />
-                              Sending...
-                            </>
-                          ) : (
-                            <>
-                              Send Message
-                              <ArrowRight size={16} className="ml-2" />
-                            </>
-                          )}
-                        </motion.span>
-                      </Button>
-                    </motion.div>
-                  </form>
+                      <span className="flex items-center justify-center">
+                        {submitState.isSubmitting ? (
+                          <>
+                            <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin mr-2"></div>
+                            Sending...
+                          </>
+                        ) : (
+                          <>
+                            Send Message
+                            <ArrowRight size={16} className="ml-2" />
+                          </>
+                        )}
+                      </span>
+                    </button>
+                  </div>
                 )}
-              </CardContent>
-            </Card>
-          </motion.div>
-        </motion.div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   );
