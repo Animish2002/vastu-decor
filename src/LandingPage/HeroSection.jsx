@@ -108,7 +108,7 @@ const HeroSection = () => {
                 whileTap={{ scale: 0.98 }}
                 onClick={() =>
                   window.open(
-                    "https://www.instagram.com/vastu_home_by_nikhil/",
+                    "https://www.instagram.com/vastu_decor_balewadi?igsh=MWgzeHJrY3YybnBrNg==",
                     "_blank"
                   )
                 }
