@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, useEffect, useCallback } from "react";
 import { motion } from "framer-motion";
 import {
   Dialog,
@@ -16,6 +16,8 @@ import {
   Heart,
   Share2,
   Download,
+  SquareArrowRight,
+  SquareArrowLeft,
 } from "lucide-react";
 
 const ProjectModal = ({
@@ -30,27 +32,68 @@ const ProjectModal = ({
 }) => {
   const videoRef = useRef(null);
 
-  const navigateProject = (direction) => {
-    if (!selectedProject) return;
+  const navigateProject = useCallback(
+    (direction) => {
+      if (!selectedProject) return;
 
-    const currentIndex = projects.findIndex((p) => p.id === selectedProject.id);
-    if (currentIndex === -1) return;
+      const currentIndex = projects.findIndex(
+        (p) => p.id === selectedProject.id
+      );
+      if (currentIndex === -1) return;
 
-    let newIndex;
-    if (direction === "next") {
-      newIndex = currentIndex === projects.length - 1 ? 0 : currentIndex + 1;
-    } else {
-      newIndex = currentIndex === 0 ? projects.length - 1 : currentIndex - 1;
+      let newIndex;
+      if (direction === "next") {
+        newIndex = currentIndex === projects.length - 1 ? 0 : currentIndex + 1;
+      } else {
+        newIndex = currentIndex === 0 ? projects.length - 1 : currentIndex - 1;
+      }
+
+      setSelectedProject(projects[newIndex]);
+    },
+    [selectedProject, projects, setSelectedProject]
+  );
+
+  // Keyboard navigation handler - only for md screens and above
+  const handleKeyDown = useCallback(
+    (event) => {
+      // Check if screen is medium size or larger (768px+)
+      const isMdScreenOrLarger = window.innerWidth >= 768;
+
+      if (!isMdScreenOrLarger) return;
+
+      // Handle arrow keys
+      if (event.key === "ArrowLeft") {
+        event.preventDefault();
+        navigateProject("prev");
+      } else if (event.key === "ArrowRight") {
+        event.preventDefault();
+        navigateProject("next");
+      } else if (event.key === "Escape") {
+        event.preventDefault();
+        setSelectedProject(null);
+      }
+    },
+    [navigateProject, setSelectedProject]
+  );
+
+  // Add keyboard event listeners when modal is open
+  useEffect(() => {
+    if (selectedProject) {
+      document.addEventListener("keydown", handleKeyDown);
+
+      // Cleanup function
+      return () => {
+        document.removeEventListener("keydown", handleKeyDown);
+      };
     }
-
-    setSelectedProject(projects[newIndex]);
-  };
+  }, [selectedProject, handleKeyDown]);
 
   const handleDownload = async (project) => {
     try {
-      const url = project.type === "video" 
-        ? project.video || project.image 
-        : project.image || project.thumbnail;
+      const url =
+        project.type === "video"
+          ? project.video || project.image
+          : project.image || project.thumbnail;
 
       const filename = `vastudecor-project-${project.id}.${
         project.type === "video" ? "mp4" : "jpg"
@@ -60,7 +103,9 @@ const ProjectModal = ({
       link.href = url;
       link.download = filename;
 
-      if (new URL(url, window.location.origin).origin !== window.location.origin) {
+      if (
+        new URL(url, window.location.origin).origin !== window.location.origin
+      ) {
         const response = await fetch(url);
         const blob = await response.blob();
         link.href = URL.createObjectURL(blob);
@@ -80,9 +125,11 @@ const ProjectModal = ({
 
   const handleShare = async (project) => {
     const shareData = {
+      projectId: project.id,
       title: project.title || `Vastu Decor Project ${project.id}`,
-      text: project.description ||
-        `Check out this amazing interior design project from Vastu Decor.`,
+      text:
+        project.description ||
+        `Check out this amazing interior design project ${project.id} from Vastu Decor.`,
       url: window.location.href,
     };
 
@@ -111,6 +158,7 @@ const ProjectModal = ({
     <Dialog
       open={!!selectedProject}
       onOpenChange={(open) => !open && setSelectedProject(null)}
+      className=""
     >
       <DialogContent className="w-full p-0 overflow-hidden max-h-[90vh] bg-white dark:bg-gray-900 rounded-xl">
         {selectedProject && (
@@ -118,7 +166,7 @@ const ProjectModal = ({
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="flex flex-col md:h-[90vh] h-[70vh]"
+            className="flex flex-col md:h-[90vh] h-[70vh] "
           >
             <DialogHeader className="p-4 border-b border-gray-100 dark:border-gray-800">
               <DialogTitle className="text-2xl font-bold text-gray-900 dark:text-gray-100">
@@ -129,8 +177,8 @@ const ProjectModal = ({
                 <span>•</span>
                 <span>
                   Category:{" "}
-                  {categories.find((c) => c.id === selectedProject.category)?.name || 
-                   selectedProject.category}
+                  {categories.find((c) => c.id === selectedProject.category)
+                    ?.name || selectedProject.category}
                 </span>
               </div>
             </DialogHeader>
@@ -149,7 +197,10 @@ const ProjectModal = ({
                     playsInline
                     controls
                   />
-                  <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
+                  <motion.div
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.9 }}
+                  >
                     <Button
                       variant="ghost"
                       size="icon"
@@ -168,7 +219,9 @@ const ProjectModal = ({
                   src={selectedProject.image || selectedProject.thumbnail}
                   alt={`Design Id: ${selectedProject.id}`}
                   className={`max-w-full max-h-[70vh] object-contain ${
-                    selectedProject.orientation === "portrait" ? "h-full" : "w-full"
+                    selectedProject.orientation === "portrait"
+                      ? "h-full"
+                      : "w-full"
                   }`}
                 />
               )}
@@ -187,7 +240,7 @@ const ProjectModal = ({
               </motion.div>
             )}
 
-            <ModalFooter 
+            <ModalFooter
               selectedProject={selectedProject}
               navigateProject={navigateProject}
               toggleLike={toggleLike}
@@ -297,10 +350,16 @@ const ModalFooter = ({
             Next <ChevronRight className="h-4 w-4 ml-2" />
           </Button>
         </motion.div>
+        {/* Keyboard navigation hint - only visible on md screens and above */}
       </div>
     </div>
-
-    <MobileFooter 
+    <div className="hidden md:flex mx-auto mt-2 text-xs text-gray-500 dark:text-gray-400 justify-center items-center space-x-1">
+      <span className="text-sm opacity-70">
+        Can Use <SquareArrowRight className="h-4 w-4 inline mb-1 mr-2" />
+        <SquareArrowRight className="h-4 w-4 inline mb-1" /> keys to navigate
+      </span>
+    </div>
+    <MobileFooter
       selectedProject={selectedProject}
       navigateProject={navigateProject}
       toggleLike={toggleLike}

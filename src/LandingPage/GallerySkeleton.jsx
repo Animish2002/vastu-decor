@@ -4,7 +4,7 @@ import { Skeleton } from "../components/ui/skeleton";
 import { cn } from "../lib/utils";
 
 const GallerySkeleton = () => (
-  <div className="grid grid-cols-2 md:grid-cols-4 auto-rows-auto gap-4 md:gap-6">
+  <div className="grid grid-cols-2 md:grid-cols-3 auto-rows-auto gap-4 md:gap-6">
     {Array(12)
       .fill()
       .map((_, i) => (
