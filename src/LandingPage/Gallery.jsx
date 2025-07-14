@@ -37,9 +37,10 @@ const Gallery = () => {
       try {
         const projectsWithHeight = galleryData.projects.map((project) => ({
           ...project,
-          height: project.orientation === "portrait" 
-            ? Math.floor(Math.random() * 2) + 2 
-            : Math.floor(Math.random() * 1) + 1,
+          height:
+            project.orientation === "portrait"
+              ? Math.floor(Math.random() * 2) + 2
+              : Math.floor(Math.random() * 1) + 1,
         }));
 
         setProjects(projectsWithHeight);
@@ -134,7 +135,7 @@ const Gallery = () => {
         style={{ width: `${scrollProgress * 100}%` }}
       />
 
-      <GalleryHeader 
+      <GalleryHeader
         scrollProgress={scrollProgress}
         isMenuOpen={isMenuOpen}
         setIsMenuOpen={setIsMenuOpen}
@@ -142,7 +143,7 @@ const Gallery = () => {
 
       {/* Main content */}
       <div className="container md:w-10/12 mx-auto py-8 px-4 flex-grow">
-        <GalleryFilters 
+        <GalleryFilters
           searchTerm={searchTerm}
           setSearchTerm={setSearchTerm}
           activeTab={activeTab}
@@ -165,6 +166,7 @@ const Gallery = () => {
             totalPages={totalPages}
             setCurrentPage={setCurrentPage}
             galleryRef={galleryRef}
+            clearFilters={clearFilters}
           />
         )}
 

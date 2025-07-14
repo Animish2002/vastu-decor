@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Card } from "../components/ui/card";
 import { Button } from "../components/ui/button";
 import { ChevronLeft, ChevronRight, Heart, PlayCircle } from "lucide-react";
+import NoProjectsFound from "./NoProjectsFound";
 
 const GalleryGrid = ({
   filteredProjects,
@@ -14,6 +15,9 @@ const GalleryGrid = ({
   totalPages,
   setCurrentPage,
   galleryRef,
+  setActiveTab,
+  setSearchTerm,
+  clearFilters,
 }) => {
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -67,7 +71,7 @@ const GalleryGrid = ({
                 className={`group cursor-pointer ${getGridSpan(project)}`}
                 onClick={() => setSelectedProject(project)}
               >
-                <ProjectCard 
+                <ProjectCard
                   project={project}
                   categories={categories}
                   likedProjects={likedProjects}
@@ -78,23 +82,33 @@ const GalleryGrid = ({
             ))}
           </motion.div>
 
-          <PaginationControls 
+          <PaginationControls
             currentPage={currentPage}
             totalPages={totalPages}
             setCurrentPage={setCurrentPage}
           />
         </>
       ) : (
-        <NoProjectsFound />
+        <NoProjectsFound clearFilters={clearFilters} />
       )}
     </AnimatePresence>
   );
 };
 
-const ProjectCard = ({ project, categories, likedProjects, toggleLike, getAspectRatioClass }) => (
+const ProjectCard = ({
+  project,
+  categories,
+  likedProjects,
+  toggleLike,
+  getAspectRatioClass,
+}) => (
   <Card className="overflow-hidden h-full hover:shadow-xl transition-all duration-300 border border-gray-100 dark:border-gray-700 bg-white/70 dark:bg-gray-800/70 backdrop-blur-sm rounded-xl">
     <div className="relative overflow-hidden h-full">
-      <div className={`h-full ${getAspectRatioClass(project)} bg-gray-100 dark:bg-gray-700`}>
+      <div
+        className={`h-full ${getAspectRatioClass(
+          project
+        )} bg-gray-100 dark:bg-gray-700`}
+      >
         {project.type === "video" ? (
           <>
             <img
@@ -148,7 +162,8 @@ const ProjectCard = ({ project, categories, likedProjects, toggleLike, getAspect
             {project.title || `Project ${project.id}`}
           </h3>
           <p className="text-xs text-gray-200">
-            {categories.find((c) => c.id === project.category)?.name || project.category}
+            {categories.find((c) => c.id === project.category)?.name ||
+              project.category}
           </p>
         </div>
       </div>
@@ -186,27 +201,6 @@ const PaginationControls = ({ currentPage, totalPages, setCurrentPage }) => (
       </Button>
     </motion.div>
   </div>
-);
-
-const NoProjectsFound = () => (
-  <motion.div
-    initial={{ opacity: 0, y: 20 }}
-    animate={{ opacity: 1, y: 0 }}
-    className="text-center py-16 bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm rounded-xl shadow-md"
-  >
-    <h3 className="text-xl font-medium mb-2">No projects found</h3>
-    <p className="text-gray-500 dark:text-gray-400 mb-6">
-      Try adjusting your search or filters
-    </p>
-    <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-      <Button
-        onClick={clearFilters}
-        className="bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700"
-      >
-        Clear All Filters
-      </Button>
-    </motion.div>
-  </motion.div>
 );
 
 export default GalleryGrid;

@@ -1,6 +1,6 @@
 import React from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ChevronLeft } from "lucide-react";
+import { ArrowLeft } from "lucide-react";
 
 const FloatingScrollButton = ({ scrollProgress }) => (
   <AnimatePresence>
@@ -14,7 +14,7 @@ const FloatingScrollButton = ({ scrollProgress }) => (
         onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
         className="fixed bottom-6 right-6 p-3 rounded-full bg-indigo-600 text-white shadow-lg z-50"
       >
-        <ChevronLeft className="h-6 w-6 rotate-90" />
+        <ArrowLeft className="h-6 w-6 rotate-90" />
       </motion.button>
     )}
   </AnimatePresence>
