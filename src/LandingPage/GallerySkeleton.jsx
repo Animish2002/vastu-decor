@@ -16,10 +16,6 @@ const GallerySkeleton = () => (
           className="rounded-lg overflow-hidden"
         >
           <Skeleton className="w-full h-48 md:h-64" />
-          <div className="pt-3">
-            <Skeleton className="h-5 w-3/4 mb-2" />
-            <Skeleton className="h-4 w-1/2" />
-          </div>
         </motion.div>
       ))}
   </div>
