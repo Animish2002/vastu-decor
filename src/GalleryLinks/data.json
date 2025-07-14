@@ -841,154 +841,598 @@
       "category": "kitchen"
     },
     {
-      "id": "141",
+      "id": 141,
       "thumbnail": "https://res.cloudinary.com/dkv3bx51z/image/upload/v1748887444/IMG_3134_lnnrrs.jpg",
       "image": "https://res.cloudinary.com/dkv3bx51z/image/upload/v1748887444/IMG_3134_lnnrrs.jpg",
       "category": "living-room"
     },
     {
-      "id": "142",
+      "id": 142,
       "thumbnail": "https://res.cloudinary.com/dkv3bx51z/image/upload/v1748887444/IMG_3136_ctyfec.jpg",
       "image": "https://res.cloudinary.com/dkv3bx51z/image/upload/v1748887444/IMG_3136_ctyfec.jpg",
       "category": "kitchen"
     },
     {
-      "id": "143",
+      "id": 143,
       "thumbnail": "https://res.cloudinary.com/dkv3bx51z/image/upload/v1748887443/IMG_3133_e6ufyc.jpg",
       "image": "https://res.cloudinary.com/dkv3bx51z/image/upload/v1748887443/IMG_3133_e6ufyc.jpg",
       "category": "living-room"
     },
     {
-      "id": "144",
+      "id": 144,
       "thumbnail": "https://res.cloudinary.com/dkv3bx51z/image/upload/v1748887443/IMG_3135_iwgwe7.jpg",
       "image": "https://res.cloudinary.com/dkv3bx51z/image/upload/v1748887443/IMG_3135_iwgwe7.jpg",
       "category": "living-room"
     },
     {
-      "id": "145",
+      "id": 145,
       "thumbnail": "https://res.cloudinary.com/dkv3bx51z/image/upload/v1748887443/IMG_2582_ebyfqu.jpg",
       "image": "https://res.cloudinary.com/dkv3bx51z/image/upload/v1748887443/IMG_2582_ebyfqu.jpg",
       "category": "wardrobe"
     },
     {
-      "id": "146",
+      "id": 146,
       "thumbnail": "https://res.cloudinary.com/dkv3bx51z/image/upload/v1748887440/IMG_2580_w05fqg.jpg",
       "image": "https://res.cloudinary.com/dkv3bx51z/image/upload/v1748887440/IMG_2580_w05fqg.jpg",
       "category": "kitchen"
     },
     {
-      "id": "147",
+      "id": 147,
       "thumbnail": "https://res.cloudinary.com/dkv3bx51z/image/upload/v1748887439/IMG_2572_pbw3dx.jpg",
       "image": "https://res.cloudinary.com/dkv3bx51z/image/upload/v1748887439/IMG_2572_pbw3dx.jpg",
       "category": "paint"
     },
     {
-      "id": "148",
+      "id": 148,
       "thumbnail": "https://res.cloudinary.com/dkv3bx51z/image/upload/v1748887440/IMG_2573_pdz5l7.jpg",
       "image": "https://res.cloudinary.com/dkv3bx51z/image/upload/v1748887440/IMG_2573_pdz5l7.jpg",
       "category": "kitchen"
     },
     {
-      "id": "149",
+      "id": 149,
       "thumbnail": "https://res.cloudinary.com/dkv3bx51z/image/upload/v1748887439/IMG_2578_jszqu4.jpg",
       "image": "https://res.cloudinary.com/dkv3bx51z/image/upload/v1748887439/IMG_2578_jszqu4.jpg",
       "category": "bedroom"
     },
     {
-      "id": "150",
+      "id": 150,
       "thumbnail": "https://res.cloudinary.com/dkv3bx51z/image/upload/v1748887439/IMG_2579_sqsk1c.jpg",
       "image": "https://res.cloudinary.com/dkv3bx51z/image/upload/v1748887439/IMG_2579_sqsk1c.jpg",
       "category": "wardrobe"
     },
     {
-      "id": "151",
+      "id": 151,
       "thumbnail": "https://res.cloudinary.com/dkv3bx51z/image/upload/v1748887439/IMG_2576_p2ekqg.jpg",
       "image": "https://res.cloudinary.com/dkv3bx51z/image/upload/v1748887439/IMG_2576_p2ekqg.jpg",
       "category": "kitchen"
     },
     {
-      "id": "152",
+      "id": 152,
       "thumbnail": "https://res.cloudinary.com/dkv3bx51z/image/upload/v1748887438/IMG_2575_fsmbts.jpg",
       "image": "https://res.cloudinary.com/dkv3bx51z/image/upload/v1748887438/IMG_2575_fsmbts.jpg",
       "category": "kitchen"
     },
     {
-      "id": "153",
+      "id": 153,
       "thumbnail": "https://res.cloudinary.com/dkv3bx51z/image/upload/v1748887438/IMG_2574_ip2jub.jpg",
       "image": "https://res.cloudinary.com/dkv3bx51z/image/upload/v1748887438/IMG_2574_ip2jub.jpg",
       "category": "bedroom"
     },
     {
-      "id": "154",
+      "id": 154,
       "thumbnail": "https://res.cloudinary.com/dkv3bx51z/image/upload/v1748887439/IMG_2577_sf2epr.jpg",
       "image": "https://res.cloudinary.com/dkv3bx51z/image/upload/v1748887439/IMG_2577_sf2epr.jpg",
       "category": "living-room"
     },
     {
-      "id": "155",
+      "id": 155,
       "thumbnail": "https://res.cloudinary.com/dkv3bx51z/image/upload/v1748887437/IMG_1765_lvgkkv.jpg",
       "image": "https://res.cloudinary.com/dkv3bx51z/image/upload/v1748887437/IMG_1765_lvgkkv.jpg",
       "category": "living-room"
     },
     {
-      "id": "156",
+      "id": 156,
       "thumbnail": "https://res.cloudinary.com/dkv3bx51z/image/upload/v1748887437/IMG_2570_swpz6v.jpg",
       "image": "https://res.cloudinary.com/dkv3bx51z/image/upload/v1748887437/IMG_2570_swpz6v.jpg",
       "category": "kitchen"
     },
     {
-      "id": "157",
+      "id": 157,
       "thumbnail": "https://res.cloudinary.com/dkv3bx51z/image/upload/v1748887436/IMG_2237_1_be37j8.jpg",
       "image": "https://res.cloudinary.com/dkv3bx51z/image/upload/v1748887436/IMG_2237_1_be37j8.jpg",
       "category": "living-room"
     },
     {
-      "id": "158",
+      "id": 158,
       "thumbnail": "https://res.cloudinary.com/dkv3bx51z/image/upload/v1748887436/IMG_2568_ltln1d.jpg",
       "image": "https://res.cloudinary.com/dkv3bx51z/image/upload/v1748887436/IMG_2568_ltln1d.jpg",
       "category": "living-room"
     },
     {
-      "id": "159",
+      "id": 159,
       "thumbnail": "https://res.cloudinary.com/dkv3bx51z/image/upload/v1748887272/PHOTO-2025-04-18-13-09-03_razd0y.jpg",
       "image": "https://res.cloudinary.com/dkv3bx51z/image/upload/v1748887272/PHOTO-2025-04-18-13-09-03_razd0y.jpg",
       "category": "bedroom"
     },
     {
-      "id": "160",
+      "id": 160,
       "thumbnail": "https://res.cloudinary.com/dkv3bx51z/image/upload/v1748887270/PHOTO-2025-04-18-00-11-34_1_kiwd33.jpg",
       "image": "https://res.cloudinary.com/dkv3bx51z/image/upload/v1748887270/PHOTO-2025-04-18-00-11-34_1_kiwd33.jpg",
       "category": "kitchen"
     },
     {
-      "id": "161",
+      "id": 161,
       "thumbnail": "https://res.cloudinary.com/dkv3bx51z/image/upload/v1748887270/PHOTO-2025-04-18-00-11-34_fysrjm.jpg",
       "image": "https://res.cloudinary.com/dkv3bx51z/image/upload/v1748887270/PHOTO-2025-04-18-00-11-34_fysrjm.jpg",
       "category": "kitchen"
     },
     {
-      "id": "162",
+      "id": 162,
       "thumbnail": "https://res.cloudinary.com/dkv3bx51z/image/upload/v1748887270/PHOTO-2025-04-18-13-09-00_x5pomj.jpg",
       "image": "https://res.cloudinary.com/dkv3bx51z/image/upload/v1748887270/PHOTO-2025-04-18-13-09-00_x5pomj.jpg",
       "category": "ceiling"
     },
     {
-      "id": "163",
+      "id": 163,
       "thumbnail": "https://res.cloudinary.com/dkv3bx51z/image/upload/v1748887271/PHOTO-2025-04-18-13-09-26_u3mgpz.jpg",
       "image": "https://res.cloudinary.com/dkv3bx51z/image/upload/v1748887271/PHOTO-2025-04-18-13-09-26_u3mgpz.jpg",
       "category": "bedroom"
     },
     {
-      "id": "164",
+      "id": 164,
       "thumbnail": "https://res.cloudinary.com/dkv3bx51z/image/upload/v1748887271/PHOTO-2025-04-18-21-50-47_1_vm3fis.jpg",
       "image": "https://res.cloudinary.com/dkv3bx51z/image/upload/v1748887271/PHOTO-2025-04-18-21-50-47_1_vm3fis.jpg",
       "category": "wardrobe"
     },
     {
-      "id": "165",
+      "id": 165,
       "thumbnail": "https://res.cloudinary.com/dkv3bx51z/image/upload/v1748887436/IMG_2569_vag50o.jpg",
       "image": "https://res.cloudinary.com/dkv3bx51z/image/upload/v1748887436/IMG_2569_vag50o.jpg",
       "category": "bedroom"
+    },
+    {
+      "id": 166,
+      "thumbnail": "https://res.cloudinary.com/dkv3bx51z/image/upload/v1752482777/IMG_4165_digrb8.jpg",
+      "image": "https://res.cloudinary.com/dkv3bx51z/image/upload/v1752482777/IMG_4165_digrb8.jpg",
+      "category": "bedroom"
+    },
+    {
+      "id": 167,
+      "thumbnail": "https://res.cloudinary.com/dkv3bx51z/image/upload/v1752482777/IMG_4166_ab2f1b.jpg",
+      "image": "https://res.cloudinary.com/dkv3bx51z/image/upload/v1752482777/IMG_4166_ab2f1b.jpg",
+      "category": "kitchen"
+    },
+    {
+      "id": 168,
+      "thumbnail": "https://res.cloudinary.com/dkv3bx51z/image/upload/v1752482776/IMG_4016_cfayvj.jpg",
+      "image": "https://res.cloudinary.com/dkv3bx51z/image/upload/v1752482776/IMG_4016_cfayvj.jpg",
+      "category": "bedroom"
+    },
+    {
+      "id": 169,
+      "thumbnail": "https://res.cloudinary.com/dkv3bx51z/image/upload/v1752482776/IMG_4120_vzqhxs.jpg",
+      "image": "https://res.cloudinary.com/dkv3bx51z/image/upload/v1752482776/IMG_4120_vzqhxs.jpg",
+      "category": "wardrobe"
+    },
+    {
+      "id": 170,
+      "thumbnail": "https://res.cloudinary.com/dkv3bx51z/image/upload/v1752482775/IMG_4119_p6uasd.jpg",
+      "image": "https://res.cloudinary.com/dkv3bx51z/image/upload/v1752482775/IMG_4119_p6uasd.jpg",
+      "category": "wardrobe"
+    },
+    {
+      "id": 171,
+      "thumbnail": "https://res.cloudinary.com/dkv3bx51z/image/upload/v1752482775/IMG_3799_ceigmi.jpg",
+      "image": "https://res.cloudinary.com/dkv3bx51z/image/upload/v1752482775/IMG_3799_ceigmi.jpg",
+      "category": "bedroom"
+    },
+    {
+      "id": 172,
+      "thumbnail": "https://res.cloudinary.com/dkv3bx51z/image/upload/v1752482775/IMG_4117_p11d8b.jpg",
+      "image": "https://res.cloudinary.com/dkv3bx51z/image/upload/v1752482775/IMG_4117_p11d8b.jpg",
+      "category": "bedroom"
+    },
+    {
+      "id": 173,
+      "thumbnail": "https://res.cloudinary.com/dkv3bx51z/image/upload/v1752482774/d0bebb66c3a76e54eadfc884f5f94460_af5t7w.jpg",
+      "image": "https://res.cloudinary.com/dkv3bx51z/image/upload/v1752482774/d0bebb66c3a76e54eadfc884f5f94460_af5t7w.jpg",
+      "category": "puja-room"
+    },
+    {
+      "id": 174,
+      "thumbnail": "https://res.cloudinary.com/dkv3bx51z/image/upload/v1752482775/IMG_4007_k6jy19.jpg",
+      "image": "https://res.cloudinary.com/dkv3bx51z/image/upload/v1752482775/IMG_4007_k6jy19.jpg",
+      "category": "wardrobe"
+    },
+    {
+      "id": 175,
+      "thumbnail": "https://res.cloudinary.com/dkv3bx51z/image/upload/v1752482774/7ca70977-8cd8-4e80-bf65-dbd3b4461f9a_uryxac.jpg",
+      "image": "https://res.cloudinary.com/dkv3bx51z/image/upload/v1752482774/7ca70977-8cd8-4e80-bf65-dbd3b4461f9a_uryxac.jpg",
+      "category": "living-room"
+    },
+    {
+      "id": 176,
+      "thumbnail": "https://res.cloudinary.com/dkv3bx51z/image/upload/v1752482773/IMG_4020_fyxoyf.jpg",
+      "image": "https://res.cloudinary.com/dkv3bx51z/image/upload/v1752482773/IMG_4020_fyxoyf.jpg",
+      "category": "wardrobe"
+    },
+    {
+      "id": 177,
+      "thumbnail": "https://res.cloudinary.com/dkv3bx51z/image/upload/v1752482772/IMG_4013_bbkz56.jpg",
+      "image": "https://res.cloudinary.com/dkv3bx51z/image/upload/v1752482772/IMG_4013_bbkz56.jpg",
+      "category": "living-room"
+    },
+    {
+      "id": 178,
+      "thumbnail": "https://res.cloudinary.com/dkv3bx51z/image/upload/v1752482771/IMG_4015_l58qo4.jpg",
+      "image": "https://res.cloudinary.com/dkv3bx51z/image/upload/v1752482771/IMG_4015_l58qo4.jpg",
+      "category": "kitchen"
+    },
+    {
+      "id": 179,
+      "thumbnail": "https://res.cloudinary.com/dkv3bx51z/image/upload/v1752482771/IMG_4018_hhbfia.jpg",
+      "image": "https://res.cloudinary.com/dkv3bx51z/image/upload/v1752482771/IMG_4018_hhbfia.jpg",
+      "category": "bedroom"
+    },
+    {
+      "id": 180,
+      "thumbnail": "https://res.cloudinary.com/dkv3bx51z/image/upload/v1752482771/IMG_4012_fpwg4s.jpg",
+      "image": "https://res.cloudinary.com/dkv3bx51z/image/upload/v1752482771/IMG_4012_fpwg4s.jpg",
+      "category": "kitchen"
+    },
+    {
+      "id": 181,
+      "thumbnail": "https://res.cloudinary.com/dkv3bx51z/image/upload/v1752482771/IMG_4019_lvmjpw.jpg",
+      "image": "https://res.cloudinary.com/dkv3bx51z/image/upload/v1752482771/IMG_4019_lvmjpw.jpg",
+      "category": "bedroom"
+    },
+    {
+      "id": 182,
+      "thumbnail": "https://res.cloudinary.com/dkv3bx51z/image/upload/v1752482771/IMG_4017_gxlvja.jpg",
+      "image": "https://res.cloudinary.com/dkv3bx51z/image/upload/v1752482771/IMG_4017_gxlvja.jpg",
+      "category": "living-room"
+    },
+    {
+      "id": 183,
+      "thumbnail": "https://res.cloudinary.com/dkv3bx51z/image/upload/v1752482771/IMG_4014_hqmnre.jpg",
+      "image": "https://res.cloudinary.com/dkv3bx51z/image/upload/v1752482771/IMG_4014_hqmnre.jpg",
+      "category": "living-room"
+    },
+    {
+      "id": 184,
+      "thumbnail": "https://res.cloudinary.com/dkv3bx51z/image/upload/v1752482770/IMG_4006_ze96j8.jpg",
+      "image": "https://res.cloudinary.com/dkv3bx51z/image/upload/v1752482770/IMG_4006_ze96j8.jpg",
+      "category": "wardrobe"
+    },
+    {
+      "id": 185,
+      "thumbnail": "https://res.cloudinary.com/dkv3bx51z/image/upload/v1752482770/IMG_4005_dpw4t8.jpg",
+      "image": "https://res.cloudinary.com/dkv3bx51z/image/upload/v1752482770/IMG_4005_dpw4t8.jpg",
+      "category": "wardrobe"
+    },
+    {
+      "id": 186,
+      "thumbnail": "https://res.cloudinary.com/dkv3bx51z/image/upload/v1752482768/IMG_3975_muq33o.jpg",
+      "image": "https://res.cloudinary.com/dkv3bx51z/image/upload/v1752482768/IMG_3975_muq33o.jpg",
+      "category": "wardrobe"
+    },
+    {
+      "id": 187,
+      "thumbnail": "https://res.cloudinary.com/dkv3bx51z/image/upload/v1752482768/IMG_4004_wsszdp.jpg",
+      "image": "https://res.cloudinary.com/dkv3bx51z/image/upload/v1752482768/IMG_4004_wsszdp.jpg",
+      "category": "puja-room"
+    },
+    {
+      "id": 188,
+      "thumbnail": "https://res.cloudinary.com/dkv3bx51z/image/upload/v1752482767/IMG_3976_nzkzuw.jpg",
+      "image": "https://res.cloudinary.com/dkv3bx51z/image/upload/v1752482767/IMG_3976_nzkzuw.jpg",
+      "category": "living-room"
+    },
+    {
+      "id": 189,
+      "thumbnail": "https://res.cloudinary.com/dkv3bx51z/image/upload/v1752482767/IMG_3973_l2dyij.jpg",
+      "image": "https://res.cloudinary.com/dkv3bx51z/image/upload/v1752482767/IMG_3973_l2dyij.jpg",
+      "category": "bedroom"
+    },
+    {
+      "id": 190,
+      "thumbnail": "https://res.cloudinary.com/dkv3bx51z/image/upload/v1752482767/IMG_4003_qohod6.jpg",
+      "image": "https://res.cloudinary.com/dkv3bx51z/image/upload/v1752482767/IMG_4003_qohod6.jpg",
+      "category": "puja-room"
+    },
+    {
+      "id": 191,
+      "thumbnail": "https://res.cloudinary.com/dkv3bx51z/image/upload/v1752482766/IMG_3972_aiuekb.jpg",
+      "image": "https://res.cloudinary.com/dkv3bx51z/image/upload/v1752482766/IMG_3972_aiuekb.jpg",
+      "category": "living-room"
+    },
+    {
+      "id": 192,
+      "thumbnail": "https://res.cloudinary.com/dkv3bx51z/image/upload/v1752482766/IMG_3928_fsjdts.jpg",
+      "image": "https://res.cloudinary.com/dkv3bx51z/image/upload/v1752482766/IMG_3928_fsjdts.jpg",
+      "category": "kitchen"
+    },
+    {
+      "id": 193,
+      "thumbnail": "https://res.cloudinary.com/dkv3bx51z/image/upload/v1752482765/IMG_3924_uidah8.jpg",
+      "image": "https://res.cloudinary.com/dkv3bx51z/image/upload/v1752482765/IMG_3924_uidah8.jpg",
+      "category": "bedroom"
+    },
+    {
+      "id": 194,
+      "thumbnail": "https://res.cloudinary.com/dkv3bx51z/image/upload/v1752482764/IMG_3857_nmzczl.jpg",
+      "image": "https://res.cloudinary.com/dkv3bx51z/image/upload/v1752482764/IMG_3857_nmzczl.jpg",
+      "category": "bedroom"
+    },
+    {
+      "id": 195,
+      "thumbnail": "https://res.cloudinary.com/dkv3bx51z/image/upload/v1752482764/IMG_3923_coapqf.jpg",
+      "image": "https://res.cloudinary.com/dkv3bx51z/image/upload/v1752482764/IMG_3923_coapqf.jpg",
+      "category": "bedroom"
+    },
+    {
+      "id": 196,
+      "thumbnail": "https://res.cloudinary.com/dkv3bx51z/image/upload/v1752482763/IMG_3854_ujexiz.jpg",
+      "image": "https://res.cloudinary.com/dkv3bx51z/image/upload/v1752482763/IMG_3854_ujexiz.jpg",
+      "category": "living-room"
+    },
+    {
+      "id": 197,
+      "thumbnail": "https://res.cloudinary.com/dkv3bx51z/image/upload/v1752482764/IMG_3858_l73nea.jpg",
+      "image": "https://res.cloudinary.com/dkv3bx51z/image/upload/v1752482764/IMG_3858_l73nea.jpg",
+      "category": "living-room"
+    },
+    {
+      "id": 198,
+      "thumbnail": "https://res.cloudinary.com/dkv3bx51z/image/upload/v1752482763/IMG_3852_vxprk2.jpg",
+      "image": "https://res.cloudinary.com/dkv3bx51z/image/upload/v1752482763/IMG_3852_vxprk2.jpg",
+      "category": "bedroom"
+    },
+    {
+      "id": 199,
+      "thumbnail": "https://res.cloudinary.com/dkv3bx51z/image/upload/v1752482763/IMG_3853_lsvoed.jpg",
+      "image": "https://res.cloudinary.com/dkv3bx51z/image/upload/v1752482763/IMG_3853_lsvoed.jpg",
+      "category": "living-room"
+    },
+    {
+      "id": 200,
+      "thumbnail": "https://res.cloudinary.com/dkv3bx51z/image/upload/v1752482763/IMG_3855_jn1n1a.jpg",
+      "image": "https://res.cloudinary.com/dkv3bx51z/image/upload/v1752482763/IMG_3855_jn1n1a.jpg",
+      "category": "living-room"
+    },
+    {
+      "id": 201,
+      "thumbnail": "https://res.cloudinary.com/dkv3bx51z/image/upload/v1752482762/IMG_3844_octpl5.jpg",
+      "image": "https://res.cloudinary.com/dkv3bx51z/image/upload/v1752482762/IMG_3844_octpl5.jpg",
+      "category": "kitchen"
+    },
+    {
+      "id": 202,
+      "thumbnail": "https://res.cloudinary.com/dkv3bx51z/image/upload/v1752482762/IMG_3845_svq4ot.jpg",
+      "image": "https://res.cloudinary.com/dkv3bx51z/image/upload/v1752482762/IMG_3845_svq4ot.jpg",
+      "category": "kitchen"
+    },
+    {
+      "id": 203,
+      "thumbnail": "https://res.cloudinary.com/dkv3bx51z/image/upload/v1752482761/IMG_3841_tlfogw.jpg",
+      "image": "https://res.cloudinary.com/dkv3bx51z/image/upload/v1752482761/IMG_3841_tlfogw.jpg",
+      "category": "living-room"
+    },
+    {
+      "id": 204,
+      "thumbnail": "https://res.cloudinary.com/dkv3bx51z/image/upload/v1752482761/IMG_3842_py1qno.jpg",
+      "image": "https://res.cloudinary.com/dkv3bx51z/image/upload/v1752482761/IMG_3842_py1qno.jpg",
+      "category": "kitchen"
+    },
+    {
+      "id": 205,
+      "thumbnail": "https://res.cloudinary.com/dkv3bx51z/image/upload/v1752482761/IMG_3843_bqhopq.jpg",
+      "image": "https://res.cloudinary.com/dkv3bx51z/image/upload/v1752482761/IMG_3843_bqhopq.jpg",
+      "category": "kitchen"
+    },
+    {
+      "id": 206,
+      "thumbnail": "https://res.cloudinary.com/dkv3bx51z/image/upload/v1752482759/IMG_3840_m4mtth.jpg",
+      "image": "https://res.cloudinary.com/dkv3bx51z/image/upload/v1752482759/IMG_3840_m4mtth.jpg",
+      "category": "living-room"
+    },
+    {
+      "id": 207,
+      "thumbnail": "https://res.cloudinary.com/dkv3bx51z/image/upload/v1752482759/IMG_3839_qx5drl.jpg",
+      "image": "https://res.cloudinary.com/dkv3bx51z/image/upload/v1752482759/IMG_3839_qx5drl.jpg",
+      "category": "living-room"
+    },
+    {
+      "id": 208,
+      "thumbnail": "https://res.cloudinary.com/dkv3bx51z/image/upload/v1752482758/IMG_3729_nbzkbd.jpg",
+      "image": "https://res.cloudinary.com/dkv3bx51z/image/upload/v1752482758/IMG_3729_nbzkbd.jpg",
+      "category": "living-room"
+    },
+    {
+      "id": 209,
+      "thumbnail": "https://res.cloudinary.com/dkv3bx51z/image/upload/v1752482759/IMG_3726_dstp52.jpg",
+      "image": "https://res.cloudinary.com/dkv3bx51z/image/upload/v1752482759/IMG_3726_dstp52.jpg",
+      "category": "living-room"
+    },
+    {
+      "id": 210,
+      "thumbnail": "https://res.cloudinary.com/dkv3bx51z/image/upload/v1752482758/IMG_3724_fdtfcf.jpg",
+      "image": "https://res.cloudinary.com/dkv3bx51z/image/upload/v1752482758/IMG_3724_fdtfcf.jpg",
+      "category": "living-room"
+    },
+    {
+      "id": 211,
+      "thumbnail": "https://res.cloudinary.com/dkv3bx51z/image/upload/v1752482758/IMG_3723_gxza4x.jpg",
+      "image": "https://res.cloudinary.com/dkv3bx51z/image/upload/v1752482758/IMG_3723_gxza4x.jpg",
+      "category": "living-room"
+    },
+    {
+      "id": 212,
+      "thumbnail": "https://res.cloudinary.com/dkv3bx51z/image/upload/v1752482757/IMG_3722_o8phvy.jpg",
+      "image": "https://res.cloudinary.com/dkv3bx51z/image/upload/v1752482757/IMG_3722_o8phvy.jpg",
+      "category": "living-room"
+    },
+    {
+      "id": 213,
+      "thumbnail": "https://res.cloudinary.com/dkv3bx51z/image/upload/v1752482756/ea0be3db-d22b-4da6-99c2-c70325423c67_d1bz7f.jpg",
+      "image": "https://res.cloudinary.com/dkv3bx51z/image/upload/v1752482756/ea0be3db-d22b-4da6-99c2-c70325423c67_d1bz7f.jpg",
+      "category": "living-room"
+    },
+    {
+      "id": 214,
+      "thumbnail": "https://res.cloudinary.com/dkv3bx51z/image/upload/v1752482755/9168e628-90cf-4127-8ec2-df9e56275363_sjrcbm.jpg",
+      "image": "https://res.cloudinary.com/dkv3bx51z/image/upload/v1752482755/9168e628-90cf-4127-8ec2-df9e56275363_sjrcbm.jpg",
+      "category": "living-room"
+    },
+    {
+      "id": 216,
+      "thumbnail": "https://res.cloudinary.com/dkv3bx51z/image/upload/v1752482752/IMG_4410_yqweof.jpg",
+      "image": "https://res.cloudinary.com/dkv3bx51z/image/upload/v1752482752/IMG_4410_yqweof.jpg",
+      "category": "bedroom"
+    },
+    {
+      "id": 217,
+      "thumbnail": "https://res.cloudinary.com/dkv3bx51z/image/upload/v1752482750/IMG_4406_ibjppy.jpg",
+      "image": "https://res.cloudinary.com/dkv3bx51z/image/upload/v1752482750/IMG_4406_ibjppy.jpg",
+      "category": "living-room"
+    },
+    {
+      "id": 218,
+      "thumbnail": "https://res.cloudinary.com/dkv3bx51z/image/upload/v1752482755/02dec76e-40bd-4cb0-ab3d-012ce50f1116_g822ud.jpg",
+      "image": "https://res.cloudinary.com/dkv3bx51z/image/upload/v1752482755/02dec76e-40bd-4cb0-ab3d-012ce50f1116_g822ud.jpg",
+      "category": "kitchen"
+    },
+    {
+      "id": 219,
+      "thumbnail": "https://res.cloudinary.com/dkv3bx51z/image/upload/v1752482755/3e2aff45-1d84-477e-a7bb-9ff00a6fd02d_wxzj4r.jpg",
+      "image": "https://res.cloudinary.com/dkv3bx51z/image/upload/v1752482755/3e2aff45-1d84-477e-a7bb-9ff00a6fd02d_wxzj4r.jpg",
+      "category": "kitchen"
+    },
+    {
+      "id": 220,
+      "thumbnail": "https://res.cloudinary.com/dkv3bx51z/image/upload/v1752482754/IMG_4538_jwybul.jpg",
+      "image": "https://res.cloudinary.com/dkv3bx51z/image/upload/v1752482754/IMG_4538_jwybul.jpg",
+      "category": "bedroom"
+    },
+    {
+      "id": 221,
+      "thumbnail": "https://res.cloudinary.com/dkv3bx51z/image/upload/v1752482752/IMG_4536_hh9xba.jpg",
+      "image": "https://res.cloudinary.com/dkv3bx51z/image/upload/v1752482752/IMG_4536_hh9xba.jpg",
+      "category": "puja-room"
+    },
+    {
+      "id": 222,
+      "thumbnail": "https://res.cloudinary.com/dkv3bx51z/image/upload/v1752482752/IMG_4537_dpfnb7.jpg",
+      "image": "https://res.cloudinary.com/dkv3bx51z/image/upload/v1752482752/IMG_4537_dpfnb7.jpg",
+      "category": "puja-room"
+    },
+    {
+      "id": 223,
+      "thumbnail": "https://res.cloudinary.com/dkv3bx51z/image/upload/v1752482751/IMG_4464_ejobbn.jpg",
+      "image": "https://res.cloudinary.com/dkv3bx51z/image/upload/v1752482751/IMG_4464_ejobbn.jpg",
+      "category": "living-room"
+    },
+    {
+      "id": 224,
+      "thumbnail": "https://res.cloudinary.com/dkv3bx51z/image/upload/v1752482751/IMG_4587_csygzi.jpg",
+      "image": "https://res.cloudinary.com/dkv3bx51z/image/upload/v1752482751/IMG_4587_csygzi.jpg",
+      "category": "living-room"
+    },
+    {
+      "id": 225,
+      "thumbnail": "https://res.cloudinary.com/dkv3bx51z/image/upload/v1752482751/IMG_4462_n6afhq.jpg",
+      "image": "https://res.cloudinary.com/dkv3bx51z/image/upload/v1752482751/IMG_4462_n6afhq.jpg",
+      "category": "bedroom"
+    },
+    {
+      "id": 226,
+      "thumbnail": "https://res.cloudinary.com/dkv3bx51z/image/upload/v1752482749/IMG_4401_mu3vnd.jpg",
+      "image": "https://res.cloudinary.com/dkv3bx51z/image/upload/v1752482749/IMG_4401_mu3vnd.jpg",
+      "category": "ceiling"
+    },
+    {
+      "id": 227,
+      "thumbnail": "https://res.cloudinary.com/dkv3bx51z/image/upload/v1752482748/IMG_4405_hzjuzu.jpg",
+      "image": "https://res.cloudinary.com/dkv3bx51z/image/upload/v1752482748/IMG_4405_hzjuzu.jpg",
+      "category": "living-room"
+    },
+    {
+      "id": 228,
+      "thumbnail": "https://res.cloudinary.com/dkv3bx51z/image/upload/v1752482748/IMG_4403_im2x9y.jpg",
+      "image": "https://res.cloudinary.com/dkv3bx51z/image/upload/v1752482748/IMG_4403_im2x9y.jpg",
+      "category": "living-room"
+    },
+    {
+      "id": 229,
+      "thumbnail": "https://res.cloudinary.com/dkv3bx51z/image/upload/v1752482748/IMG_4400_cdusym.jpg",
+      "image": "https://res.cloudinary.com/dkv3bx51z/image/upload/v1752482748/IMG_4400_cdusym.jpg",
+      "category": "living-room"
+    },
+    {
+      "id": 230,
+      "thumbnail": "https://res.cloudinary.com/dkv3bx51z/image/upload/v1752482743/IMG_4173_q4sx3u.jpg",
+      "image": "https://res.cloudinary.com/dkv3bx51z/image/upload/v1752482743/IMG_4173_q4sx3u.jpg",
+      "category": "kitchen"
+    },
+    {
+      "id": 231,
+      "thumbnail": "https://res.cloudinary.com/dkv3bx51z/image/upload/v1752482742/IMG_4174_xtzqpe.jpg",
+      "image": "https://res.cloudinary.com/dkv3bx51z/image/upload/v1752482742/IMG_4174_xtzqpe.jpg",
+      "category": "wardrobe"
+    },
+    {
+      "id": 232,
+      "thumbnail": "https://res.cloudinary.com/dkv3bx51z/image/upload/v1752482741/IMG_4172_uin1ch.jpg",
+      "image": "https://res.cloudinary.com/dkv3bx51z/image/upload/v1752482741/IMG_4172_uin1ch.jpg",
+      "category": "wardrobe"
+    },
+    {
+      "id": 233,
+      "thumbnail": "https://res.cloudinary.com/dkv3bx51z/image/upload/v1752482741/IMG_4167_ahb9ar.jpg",
+      "image": "https://res.cloudinary.com/dkv3bx51z/image/upload/v1752482741/IMG_4167_ahb9ar.jpg",
+      "category": "kitchen"
+    },
+    {
+      "id": 234,
+      "thumbnail": "https://res.cloudinary.com/dkv3bx51z/image/upload/v1752482741/IMG_4171_tk8jbk.jpg",
+      "image": "https://res.cloudinary.com/dkv3bx51z/image/upload/v1752482741/IMG_4171_tk8jbk.jpg",
+      "category": "living-room"
+    },
+    {
+      "id": 235,
+      "thumbnail": "https://res.cloudinary.com/dkv3bx51z/image/upload/v1752482743/IMG_4178_quiksr.jpg",
+      "image": "https://res.cloudinary.com/dkv3bx51z/image/upload/v1752482743/IMG_4178_quiksr.jpg",
+      "category": "kitchen"
+    },
+    {
+      "id": 236,
+      "thumbnail": "https://res.cloudinary.com/dkv3bx51z/image/upload/v1752482743/IMG_4225_qfixor.jpg",
+      "image": "https://res.cloudinary.com/dkv3bx51z/image/upload/v1752482743/IMG_4225_qfixor.jpg",
+      "category": "living-room"
+    },
+    {
+      "id": 237,
+      "thumbnail": "https://res.cloudinary.com/dkv3bx51z/image/upload/v1752482743/IMG_4179_pt0c4u.jpg",
+      "image": "https://res.cloudinary.com/dkv3bx51z/image/upload/v1752482743/IMG_4179_pt0c4u.jpg",
+      "category": "living-room"
+    },
+    {
+      "id": 238,
+      "thumbnail": "https://res.cloudinary.com/dkv3bx51z/image/upload/v1752482747/IMG_4398_sic6lf.jpg",
+      "image": "https://res.cloudinary.com/dkv3bx51z/image/upload/v1752482747/IMG_4398_sic6lf.jpg",
+      "category": "living-room"
+    },
+    {
+      "id": 239,
+      "thumbnail": "https://res.cloudinary.com/dkv3bx51z/image/upload/v1752482744/IMG_4329_ubkeia.jpg",
+      "image": "https://res.cloudinary.com/dkv3bx51z/image/upload/v1752482744/IMG_4329_ubkeia.jpg",
+      "category": "living-room"
+    },
+    {
+      "id": 240,
+      "thumbnail": "https://res.cloudinary.com/dkv3bx51z/image/upload/v1752482744/IMG_4224_on23hf.jpg",
+      "image": "https://res.cloudinary.com/dkv3bx51z/image/upload/v1752482744/IMG_4224_on23hf.jpg",
+      "category": "living-room"
     }
   ],
   "categories": [
