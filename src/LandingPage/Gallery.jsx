@@ -15,19 +15,21 @@ import galleryData from "../GalleryLinks/data.json";
 const Gallery = () => {
   // State management
   const [projects, setProjects] = useState([]);
-  const [filteredProjects, setFilteredProjects] = useState([]);
+  const [allFilteredProjects, setAllFilteredProjects] = useState([]);
+  const [displayedProjects, setDisplayedProjects] = useState([]);
   const [categories, setCategories] = useState([]);
   const [activeTab, setActiveTab] = useState("all");
   const [searchTerm, setSearchTerm] = useState("");
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [selectedProject, setSelectedProject] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
-  const [currentPage, setCurrentPage] = useState(1);
-  const [totalPages, setTotalPages] = useState(1);
+  const [isLoadingMore, setIsLoadingMore] = useState(false);
+  const [hasMore, setHasMore] = useState(true);
   const [isMuted, setIsMuted] = useState(true);
   const [likedProjects, setLikedProjects] = useState(new Set());
   const [scrollProgress, setScrollProgress] = useState(0);
   const galleryRef = useRef(null);
+  const sentinelRef = useRef(null);
   const projectsPerPage = 12;
 
   // Initialize data
@@ -71,7 +73,7 @@ const Gallery = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Filter projects
+  // Filter projects and reset display
   useEffect(() => {
     let result = [...projects];
 
@@ -89,19 +91,83 @@ const Gallery = () => {
       );
     }
 
-    setTotalPages(Math.ceil(result.length / projectsPerPage));
-    const paginatedResults = result.slice(
-      (currentPage - 1) * projectsPerPage,
-      currentPage * projectsPerPage
+    setAllFilteredProjects(result);
+    setHasMore(result.length > projectsPerPage);
+
+    // Reset displayed projects to first batch
+    const initialProjects = result.slice(0, projectsPerPage);
+    setDisplayedProjects(initialProjects);
+  }, [activeTab, searchTerm, projects]);
+
+  // Load more projects function
+  const loadMoreProjects = () => {
+    console.log("Load more triggered:", {
+      isLoadingMore,
+      hasMore,
+      displayedCount: displayedProjects.length,
+      totalCount: allFilteredProjects.length,
+    });
+
+    if (isLoadingMore || !hasMore || allFilteredProjects.length === 0) return;
+
+    setIsLoadingMore(true);
+
+    setTimeout(() => {
+      const nextIndex = displayedProjects.length; // Use displayed projects length instead
+      const nextProjects = allFilteredProjects.slice(
+        nextIndex,
+        nextIndex + projectsPerPage
+      );
+
+      console.log("Loading projects:", {
+        nextIndex,
+        nextProjectsCount: nextProjects.length,
+      });
+
+      if (nextProjects.length > 0) {
+        setDisplayedProjects((prev) => [...prev, ...nextProjects]);
+        setHasMore(nextIndex + projectsPerPage < allFilteredProjects.length);
+      } else {
+        setHasMore(false);
+      }
+
+      setIsLoadingMore(false);
+    }, 800); // Simulate loading time
+  };
+
+  // Intersection Observer for infinite scroll
+  useEffect(() => {
+    if (!allFilteredProjects.length) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const target = entries[0];
+        if (target.isIntersecting && hasMore && !isLoadingMore) {
+          loadMoreProjects();
+        }
+      },
+      {
+        threshold: 0.1,
+        rootMargin: "200px",
+      }
     );
 
-    setFilteredProjects(paginatedResults);
-  }, [activeTab, searchTerm, projects, currentPage]);
+    const currentSentinel = sentinelRef.current;
+    if (currentSentinel) {
+      observer.observe(currentSentinel);
+    }
 
-  // Reset pagination when filters change
-  useEffect(() => {
-    setCurrentPage(1);
-  }, [activeTab, searchTerm]);
+    return () => {
+      if (currentSentinel) {
+        observer.unobserve(currentSentinel);
+      }
+    };
+  }, [
+    hasMore,
+    isLoadingMore,
+    allFilteredProjects.length,
+    displayedProjects.length,
+  ]);
 
   const clearFilters = () => {
     setActiveTab("all");
@@ -157,16 +223,16 @@ const Gallery = () => {
           <GallerySkeleton />
         ) : (
           <GalleryGrid
-            filteredProjects={filteredProjects}
+            displayedProjects={displayedProjects}
             categories={categories}
             setSelectedProject={setSelectedProject}
             likedProjects={likedProjects}
             toggleLike={toggleLike}
-            currentPage={currentPage}
-            totalPages={totalPages}
-            setCurrentPage={setCurrentPage}
             galleryRef={galleryRef}
             clearFilters={clearFilters}
+            sentinelRef={sentinelRef}
+            isLoadingMore={isLoadingMore}
+            hasMore={hasMore}
           />
         )}
 

@@ -1,23 +1,21 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Card } from "../components/ui/card";
-import { Button } from "../components/ui/button";
-import { ChevronLeft, ChevronRight, Heart, PlayCircle } from "lucide-react";
+import { Heart, PlayCircle } from "lucide-react";
 import NoProjectsFound from "./NoProjectsFound";
+import GallerySkeleton from "./GallerySkeleton";
 
 const GalleryGrid = ({
-  filteredProjects,
+  displayedProjects,
   categories,
   setSelectedProject,
   likedProjects,
   toggleLike,
-  currentPage,
-  totalPages,
-  setCurrentPage,
   galleryRef,
-  setActiveTab,
-  setSearchTerm,
   clearFilters,
+  sentinelRef,
+  isLoadingMore,
+  hasMore,
 }) => {
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -55,17 +53,17 @@ const GalleryGrid = ({
 
   return (
     <AnimatePresence mode="wait">
-      {filteredProjects.length > 0 ? (
-        <>
+      {displayedProjects.length > 0 ? (
+        <div ref={galleryRef}>
           <motion.div
             className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 auto-rows-auto gap-3 md:gap-6"
             variants={containerVariants}
             initial="hidden"
             animate="show"
           >
-            {filteredProjects.map((project) => (
+            {displayedProjects.map((project, index) => (
               <motion.div
-                key={project.id}
+                key={`${project.id}-${index}`}
                 variants={itemVariants}
                 whileHover={{ y: -5, scale: 1.02 }}
                 className={`group cursor-pointer ${getGridSpan(project)}`}
@@ -82,12 +80,47 @@ const GalleryGrid = ({
             ))}
           </motion.div>
 
-          <PaginationControls
-            currentPage={currentPage}
-            totalPages={totalPages}
-            setCurrentPage={setCurrentPage}
-          />
-        </>
+          {/* Loading more skeleton */}
+          {isLoadingMore && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.3 }}
+              className="mt-8"
+            >
+              <GallerySkeleton />
+            </motion.div>
+          )}
+
+          {/* Sentinel element for intersection observer */}
+          {hasMore && (
+            <div
+              ref={sentinelRef}
+              className="h-20 flex items-center justify-center mt-8"
+            >
+              <div className="flex items-center space-x-2 text-gray-500">
+                <div className="w-2 h-2 bg-indigo-500 rounded-full animate-pulse"></div>
+                <div className="w-2 h-2 bg-indigo-500 rounded-full animate-pulse delay-100"></div>
+                <div className="w-2 h-2 bg-indigo-500 rounded-full animate-pulse delay-200"></div>
+              </div>
+            </div>
+          )}
+
+          {/* End of results indicator */}
+          {!hasMore && displayedProjects.length > 0 && (
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              className="mt-12 text-center"
+            >
+              <div className="inline-flex items-center px-4 py-2 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400 text-sm">
+                <span>You've reached the end of the gallery</span>
+              </div>
+            </motion.div>
+          )}
+        </div>
       ) : (
         <NoProjectsFound clearFilters={clearFilters} />
       )}
@@ -115,6 +148,7 @@ const ProjectCard = ({
               src={project.thumbnail}
               alt={`Project ${project.id}`}
               className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+              loading="lazy"
             />
             <div className="absolute inset-0 flex items-center justify-center">
               <motion.div
@@ -133,6 +167,7 @@ const ProjectCard = ({
             className="w-full h-full object-cover"
             whileHover={{ scale: 1.1 }}
             transition={{ duration: 0.7 }}
+            loading="lazy"
           />
         )}
       </div>
@@ -169,38 +204,6 @@ const ProjectCard = ({
       </div>
     </div>
   </Card>
-);
-
-const PaginationControls = ({ currentPage, totalPages, setCurrentPage }) => (
-  <div className="mt-12 flex justify-center items-center space-x-2">
-    <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-      <Button
-        variant="outline"
-        size="sm"
-        onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
-        disabled={currentPage === 1}
-        className="border-indigo-200 dark:border-indigo-800 hover:bg-indigo-50 dark:hover:bg-indigo-900/20"
-      >
-        <ChevronLeft className="h-4 w-4 mr-2" /> Previous
-      </Button>
-    </motion.div>
-
-    <span className="text-sm">
-      Page {currentPage} of {totalPages}
-    </span>
-
-    <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-      <Button
-        variant="outline"
-        size="sm"
-        onClick={() => setCurrentPage((prev) => Math.min(prev + 1, totalPages))}
-        disabled={currentPage === totalPages}
-        className="border-indigo-200 dark:border-indigo-800 hover:bg-indigo-50 dark:hover:bg-indigo-900/20"
-      >
-        Next <ChevronRight className="h-4 w-4 ml-2" />
-      </Button>
-    </motion.div>
-  </div>
 );
 
 export default GalleryGrid;
