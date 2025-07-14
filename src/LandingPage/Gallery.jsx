@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import GalleryHeader from "./GalleryHeader";
 import GalleryFilters from "./GalleryFilters";
@@ -28,9 +28,12 @@ const Gallery = () => {
   const [isMuted, setIsMuted] = useState(true);
   const [likedProjects, setLikedProjects] = useState(new Set());
   const [scrollProgress, setScrollProgress] = useState(0);
+  const [currentPage, setCurrentPage] = useState(1);
   const galleryRef = useRef(null);
   const sentinelRef = useRef(null);
+  const observerRef = useRef(null);
   const projectsPerPage = 12;
+  const isFirstRender = useRef(true);
 
   // Initialize data
   useEffect(() => {
@@ -91,82 +94,163 @@ const Gallery = () => {
       );
     }
 
+    console.log("Filtered projects:", result.length);
+
     setAllFilteredProjects(result);
+
+    // Reset everything when filters change
+    setCurrentPage(1);
+    setIsLoadingMore(false);
     setHasMore(result.length > projectsPerPage);
 
     // Reset displayed projects to first batch
     const initialProjects = result.slice(0, projectsPerPage);
     setDisplayedProjects(initialProjects);
+
+    console.log("Initial display:", initialProjects.length);
   }, [activeTab, searchTerm, projects]);
 
   // Load more projects function
-  const loadMoreProjects = () => {
-    console.log("Load more triggered:", {
+  const loadMoreProjects = useCallback(() => {
+    console.log("=== LOAD MORE TRIGGERED ===");
+    console.log("Current state:", {
       isLoadingMore,
       hasMore,
+      currentPage,
       displayedCount: displayedProjects.length,
       totalCount: allFilteredProjects.length,
     });
 
-    if (isLoadingMore || !hasMore || allFilteredProjects.length === 0) return;
+    // Prevent multiple calls
+    if (isLoadingMore || !hasMore) {
+      console.log("Blocking load more:", { isLoadingMore, hasMore });
+      return;
+    }
 
     setIsLoadingMore(true);
 
+    // Use setTimeout to simulate loading and prevent rapid calls
     setTimeout(() => {
-      const nextIndex = displayedProjects.length; // Use displayed projects length instead
-      const nextProjects = allFilteredProjects.slice(
-        nextIndex,
-        nextIndex + projectsPerPage
-      );
+      const startIndex = currentPage * projectsPerPage;
+      const endIndex = startIndex + projectsPerPage;
+      const nextProjects = allFilteredProjects.slice(startIndex, endIndex);
 
-      console.log("Loading projects:", {
-        nextIndex,
-        nextProjectsCount: nextProjects.length,
+      console.log("Loading batch:", {
+        startIndex,
+        endIndex,
+        batchSize: nextProjects.length,
+        totalProjects: allFilteredProjects.length,
       });
 
       if (nextProjects.length > 0) {
-        setDisplayedProjects((prev) => [...prev, ...nextProjects]);
-        setHasMore(nextIndex + projectsPerPage < allFilteredProjects.length);
+        setDisplayedProjects((prev) => {
+          const newProjects = [...prev, ...nextProjects];
+          console.log("New displayed count:", newProjects.length);
+          return newProjects;
+        });
+
+        setCurrentPage((prev) => prev + 1);
+        setHasMore(endIndex < allFilteredProjects.length);
       } else {
+        console.log("No more projects to load");
         setHasMore(false);
       }
 
       setIsLoadingMore(false);
-    }, 800); // Simulate loading time
-  };
+    }, 800);
+  }, [
+    isLoadingMore,
+    hasMore,
+    currentPage,
+    allFilteredProjects,
+    displayedProjects.length,
+  ]);
 
-  // Intersection Observer for infinite scroll
+  // Intersection Observer setup
   useEffect(() => {
-    if (!allFilteredProjects.length) return;
+    // Don't set up observer on initial render or when loading
+    if (isFirstRender.current || isLoading) {
+      isFirstRender.current = false;
+      return;
+    }
+
+    // Clean up existing observer
+    if (observerRef.current) {
+      observerRef.current.disconnect();
+    }
+
+    // Don't create observer if conditions aren't met
+    if (
+      !sentinelRef.current ||
+      !hasMore ||
+      allFilteredProjects.length <= projectsPerPage
+    ) {
+      console.log("Not creating observer:", {
+        hasSentinel: !!sentinelRef.current,
+        hasMore,
+        totalProjects: allFilteredProjects.length,
+        projectsPerPage,
+      });
+      return;
+    }
+
+    console.log("Creating intersection observer");
 
     const observer = new IntersectionObserver(
       (entries) => {
         const target = entries[0];
-        if (target.isIntersecting && hasMore && !isLoadingMore) {
+        console.log("Intersection observed:", {
+          isIntersecting: target.isIntersecting,
+          isLoadingMore,
+          hasMore,
+        });
+
+        if (target.isIntersecting && !isLoadingMore && hasMore) {
+          console.log("Triggering load more from observer");
           loadMoreProjects();
         }
       },
       {
         threshold: 0.1,
-        rootMargin: "200px",
+        rootMargin: "100px",
       }
     );
 
-    const currentSentinel = sentinelRef.current;
-    if (currentSentinel) {
-      observer.observe(currentSentinel);
-    }
+    observerRef.current = observer;
+    observer.observe(sentinelRef.current);
 
     return () => {
-      if (currentSentinel) {
-        observer.unobserve(currentSentinel);
+      if (observerRef.current) {
+        observerRef.current.disconnect();
       }
     };
   }, [
     hasMore,
     isLoadingMore,
     allFilteredProjects.length,
+    loadMoreProjects,
+    isLoading,
+  ]);
+
+  // Debug logging
+  useEffect(() => {
+    console.log("Gallery State Update:", {
+      allFilteredProjects: allFilteredProjects.length,
+      displayedProjects: displayedProjects.length,
+      hasMore,
+      isLoadingMore,
+      currentPage,
+      activeTab,
+      searchTerm,
+    });
+  }, [
+    allFilteredProjects.length,
     displayedProjects.length,
+    hasMore,
+    isLoadingMore,
+    currentPage,
+    activeTab,
+    searchTerm,
   ]);
 
   const clearFilters = () => {
