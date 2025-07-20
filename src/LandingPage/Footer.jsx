@@ -148,12 +148,12 @@ const Footer = () => {
           <span className="text-slate-500 text-sm">
             Designed with <span className="text-red-500">♥</span> by
             <a
-              href="https://www.thefortune.club/"
+              href="https://www.animishchopade.in/"
               target="_blank"
               rel="noopener noreferrer"
               className="text-yellow-500 hover:underline ml-1"
             >
-              The Fortune Club
+              Animish Chopade
             </a>
           </span>
         </div>
